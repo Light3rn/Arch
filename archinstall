@@ -15,15 +15,14 @@
 #-------------------------------------------------------------------------------
 # Run this script after your first boot with archlinux (as root)
 
+virtualbox=0
+
 set -x
 loadkeys fi
 mkfs.ext4 /dev/sda1
-mkfs.fat -F32 /dev/sda2
 mount /dev/sda1 /mnt
-mount /dev/sda2 /boot
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
-genfstab -U /boot >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt echo "fi utf8" >> /etc/locale.gen
@@ -31,7 +30,14 @@ arch-chroot /mnt locale-gen
 arch-chroot /mnt echo "KEYMAP=fi" >> /etc/vconsole.conf
 arch-chroot /mnt echo "arch" >> /etc/hostname
 arch-chroot /mnt pacman --noconfirm -S grub dialog wpa_supplicant
-grub-install --target=x86_64-efi --efi-directory=/boot --root-directory=/mnt --bootloader-id=grub
+if [ virtualbox = 0 ]; then
+  mkfs.fat -F32 /dev/sda2
+  mount /dev/sda2 /boot
+  genfstab -U /boot >> /mnt/etc/fstab
+  grub-install --target=x86_64-efi --efi-directory=/boot --root-directory=/mnt --bootloader-id=grub
+else
+  grub-install /dev/sda
+fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 set +x
 echo 'Muista passwd!'
