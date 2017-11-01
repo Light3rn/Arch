@@ -48,7 +48,8 @@ else
 fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m -G wheel -s /bin/bash $wantedname
-arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant xorg-server xorg-xinit xmonad
+arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant xorg-server xorg-xinit lxde
+arch-chroot /mnt echo "exec xmonad" >> /home/$wantedname/.xinitrc
 set +x
 echo 'Give me root password:'
 passwd
