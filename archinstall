@@ -30,7 +30,7 @@ arch-chroot /mnt locale-gen
 arch-chroot /mnt echo "KEYMAP=fi" >> /etc/vconsole.conf
 arch-chroot /mnt echo "arch" >> /etc/hostname
 arch-chroot /mnt pacman --noconfirm -S grub dialog wpa_supplicant
-if [ uefi == 1 ] 
+if (( uefi == 1 )) 
 then
   mkfs.fat -F32 /dev/sda2
   mount /dev/sda2 /boot
