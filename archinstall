@@ -15,7 +15,7 @@
 #-------------------------------------------------------------------------------
 # Run this script after your first boot with archlinux (as root)
 
-virtualbox=0
+uefi=1
 
 set -x
 loadkeys fi
@@ -30,7 +30,7 @@ arch-chroot /mnt locale-gen
 arch-chroot /mnt echo "KEYMAP=fi" >> /etc/vconsole.conf
 arch-chroot /mnt echo "arch" >> /etc/hostname
 arch-chroot /mnt pacman --noconfirm -S grub dialog wpa_supplicant
-if [ virtualbox -eq 0 ] 
+if [ uefi -eq 1 ] 
 then
   mkfs.fat -F32 /dev/sda2
   mount /dev/sda2 /boot
