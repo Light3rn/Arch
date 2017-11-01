@@ -40,6 +40,5 @@ else
   arch-chroot /mnt grub-install /dev/sda
 fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xmonad
 set +x
 echo 'Muista passwd!'
