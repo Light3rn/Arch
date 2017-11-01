@@ -24,12 +24,12 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 genfstab -U /boot >> /mnt/etc/fstab
 # arch-chroot /mnt
-arch chroot ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
-arch chroot hwclock --systohc
-arch_chroot sed -i 'fi utf8' /etc/locale.gen
-arch_chroot locale-gen
-arch_chroot sed -i 'KEYMAP=fi' /etc/vconsole.conf
-arch_chroot sed -i 'arch' /etc/hostname
+arch-chroot ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
+arch-chroot hwclock --systohc
+arch-chroot sed -i 'fi utf8' /etc/locale.gen
+arch-chroot locale-gen
+arch-chroot sed -i 'KEYMAP=fi' /etc/vconsole.conf
+arch-chroot sed -i 'arch' /etc/hostname
 grub-install --target=x86_64-efi --efi-directory=/boot --root-directory=/mnt --bootloader-id=grub
 arch-chroot grub-mkconfig -o /boot/grub/grub.cfg
 echo 'Muista passwd!'
