@@ -14,13 +14,20 @@
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 # Run this script after your first boot with archlinux (as root)
-
-uefi=1
+read -p 'Username: ' wantedname
+read -p 'Using UEFI? (1, 0): ' uefi
+if (( $uefi == 1))
+then
+read -p 'Give me EFI partition (ex. /dev/sda2): ' efipart
+else
+read -p 'Give me installation device (ex. /dev/sda): ' efipart
+fi
+read -p 'Give me Linux partition (ex. /dev/sda1): ' linuxpart
 
 set -x
 loadkeys fi
-mkfs.ext4 /dev/sda1
-mount /dev/sda1 /mnt
+mkfs.ext4 $linuxpart
+mount $linuxpart /mnt
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
@@ -30,15 +37,19 @@ arch-chroot /mnt locale-gen
 arch-chroot /mnt echo "KEYMAP=fi" >> /etc/vconsole.conf
 arch-chroot /mnt echo "arch" >> /etc/hostname
 arch-chroot /mnt pacman --noconfirm -S grub dialog wpa_supplicant
-if (( uefi == 1 )) 
+if (( $uefi == 1 )) 
 then
-  mkfs.fat -F32 /dev/sda2
-  mount /dev/sda2 /boot
+  mkfs.fat -F32 $efipart
+  mount $efipart /boot
   genfstab -U /boot >> /mnt/etc/fstab
   grub-install --target=x86_64-efi --efi-directory=/boot --root-directory=/mnt --bootloader-id=grub
 else
-  arch-chroot /mnt grub-install /dev/sda
+  arch-chroot /mnt grub-install $efipart
 fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+useradd -m -G wheel -s /bin/bash $wantedname
 set +x
-echo 'Muista passwd!'
+echo 'Give me root password:'
+passwd
+echo 'Give me user password:'
+passwd $wantedname
