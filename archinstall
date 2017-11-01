@@ -30,14 +30,14 @@ arch-chroot /mnt locale-gen
 arch-chroot /mnt echo "KEYMAP=fi" >> /etc/vconsole.conf
 arch-chroot /mnt echo "arch" >> /etc/hostname
 arch-chroot /mnt pacman --noconfirm -S grub dialog wpa_supplicant
-if [ uefi -eq 1 ] 
+if [ uefi == 1 ] 
 then
   mkfs.fat -F32 /dev/sda2
   mount /dev/sda2 /boot
   genfstab -U /boot >> /mnt/etc/fstab
   grub-install --target=x86_64-efi --efi-directory=/boot --root-directory=/mnt --bootloader-id=grub
 else
-  grub-install /dev/sda
+  arch-chroot /mnt grub-install /dev/sda
 fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 set +x
