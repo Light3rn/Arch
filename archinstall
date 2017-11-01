@@ -32,7 +32,7 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
-echo "fi.utf8" >> /mnt/etc/locale.gen
+echo "fi_FI.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
 echo "KEYMAP=fi" >> /mnt/etc/vconsole.conf
 echo "arch" >> /mnt/etc/hostname
