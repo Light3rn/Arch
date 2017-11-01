@@ -32,10 +32,10 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
-arch-chroot /mnt echo "fi.utf8" >> /etc/locale.gen
+echo "fi.utf8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
-arch-chroot /mnt echo "KEYMAP=fi" >> /etc/vconsole.conf
-arch-chroot /mnt echo "arch" >> /etc/hostname
+echo "KEYMAP=fi" >> /mnt/etc/vconsole.conf
+echo "arch" >> /mnt/etc/hostname
 arch-chroot /mnt pacman --noconfirm -S grub
 if (( $uefi == 1 )) 
 then
@@ -49,7 +49,7 @@ fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m -G wheel -s /bin/bash $wantedname
 arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant xorg-server xorg-xinit lxde
-arch-chroot /mnt echo "exec xmonad" >> /home/$wantedname/.xinitrc
+echo "exec xmonad" >> /mnt/home/$wantedname/.xinitrc
 set +x
 echo 'Give me root password:'
 passwd
