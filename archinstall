@@ -26,10 +26,10 @@ genfstab -U /boot >> /mnt/etc/fstab
 # arch-chroot /mnt
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
-arch-chroot /mnt sed -i 'fi utf8' /etc/locale.gen
+arch-chroot /mnt echo "fi utf8" >> /etc/locale.gen
 arch-chroot /mnt locale-gen
-arch-chroot /mnt sed -i 'KEYMAP=fi' /etc/vconsole.conf
-arch-chroot /mnt sed -i 'arch' /etc/hostname
+arch-chroot /mnt echo "KEYMAP=fi" >> /etc/vconsole.conf
+arch-chroot /mnt echo "arch" >> /etc/hostname
 grub-install --target=x86_64-efi --efi-directory=/boot --root-directory=/mnt --bootloader-id=grub
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 echo 'Muista passwd!'
