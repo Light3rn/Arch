@@ -26,6 +26,7 @@ read -p 'Give me Linux partition (ex. /dev/sda1): ' linuxpart
 
 set -x
 loadkeys fi
+umount -R $linuxpart
 mkfs.ext4 $linuxpart
 mount $linuxpart /mnt
 pacstrap /mnt base
@@ -40,6 +41,7 @@ echo "arch" >> /mnt/etc/hostname
 arch-chroot /mnt pacman --noconfirm -S grub
 if (( $uefi == 1 )) 
 then
+  umount -R $efipart
   mkfs.fat -F32 $efipart
   mount $efipart /boot
   genfstab -U /boot >> /mnt/etc/fstab
