@@ -57,6 +57,7 @@ echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 mkdir -p /mnt/home/$wantedname/.xmonad
 cp ./xmonad.hs /mnt/home/$wantedname/.xmonad/
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
+echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
 set +x
 echo 'Give me root password:'
 arch-chroot /mnt passwd
