@@ -27,7 +27,7 @@ read -p 'Give me Linux partition (ex. /dev/sda1): ' linuxpart
 set -x
 loadkeys fi
 umount $linuxpart
-mkfs.ext4 $linuxpart
+mkfs.ext4 -F $linuxpart
 mount $linuxpart /mnt
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
