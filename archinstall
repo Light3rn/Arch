@@ -52,7 +52,7 @@ fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo xorg-server xorg-xinit xterm xf86-video-intel xmonad xmonad-contrib
-echo $'setxkbmap fi &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
+echo $'setxkbmap fi &\nxterm &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  exec startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 mkdir -p /mnt/home/$wantedname/.xmonad
 cp ./xmonad.hs /mnt/home/$wantedname/.xmonad/
