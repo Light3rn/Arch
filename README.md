@@ -1,4 +1,4 @@
-# Arch
+# Light3rn Arch
 Arch install script
 
 1) Boot Installation
