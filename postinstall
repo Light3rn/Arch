@@ -1,8 +1,0 @@
-#!/bin/bash
-# Run this script after archinstall -script
-
-arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo xorg-server xorg-xinit xterm xf86-video-intel xmonad xmonad-contrib firefox
-echo $'setxkbmap fi &\nxterm &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
-echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  exec startx\nfi' >> /mnt/home/$wantedname/.bash_profile
-mkdir -p /mnt/home/$wantedname/.xmonad
-cp ./xmonad.hs /mnt/home/$wantedname/.xmonad/

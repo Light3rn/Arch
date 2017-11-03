@@ -1,0 +1,8 @@
+#!/bin/bash
+# Run this script after archinstall -script
+
+arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xmonad xmonad-contrib firefox
+echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
+echo $'setxkbmap fi &\nxterm &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
+mkdir -p /mnt/home/$wantedname/.xmonad
+cp ./xmonad.hs /mnt/home/$wantedname/.xmonad/
