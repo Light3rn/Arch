@@ -18,11 +18,11 @@ read -p 'Username: ' wantedname
 read -p 'Using UEFI? (1, 0): ' uefi
 if (( $uefi == 1))
 then
-read -p 'Give me EFI partition (ex. /dev/sda2): ' efipart
+read -p 'Give me EFI partition (ex. /dev/sda1): ' efipart
 else
 read -p 'Give me installation device (ex. /dev/sda): ' efipart
 fi
-read -p 'Give me Linux partition (ex. /dev/sda1): ' linuxpart
+read -p 'Give me Linux partition (ex. /dev/sda2): ' linuxpart
 
 set -x
 loadkeys fi
