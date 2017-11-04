@@ -35,7 +35,7 @@ then
   mkfs.fat -F32 $efipart
   mount $efipart /boot
 fi
-pacstrap /mnt basev
+pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
