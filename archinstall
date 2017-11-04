@@ -55,7 +55,7 @@ arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
 arch-chroot /mnt systemctl enable dhcpcd.service
-arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xmonad xmonad-contrib firefox
+arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xmonad xmonad-contrib dmenu firefox
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nxterm &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
 #arch-chroot /mnt pacman --noconfirm -S weston plasma-meta plasma-wayland-session
