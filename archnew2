@@ -45,16 +45,18 @@ arch-chroot /mnt locale-gen
 echo "KEYMAP=fi" >> /mnt/etc/vconsole.conf
 echo "arch" >> /mnt/etc/hostname
 
-#if (( $uefi == 1 )) 
-#then
+if (( $uefi == 1 )) 
+then
 #  genfstab -U /boot >> /mnt/etc/fstab
 #  bootctl --path=/boot install
-##  mkdir -p /boot/loader
-##  echo $'default  arch\ntimeout  4\neditor   0' >> /boot/loader/loader.conf
-#else
-#  arch-chroot /mnt pacman --noconfirm -S grub
-#  arch-chroot /mnt grub-install $efipart
-#fi
+  mkdir -p /mnt/boot/loader
+  echo $'default  arch\ntimeout  4\neditor   0' >> /mnt/boot/loader/loader.conf
+  mkdir -p /mnt/boot/loader/entries
+  echo $'title          Arch Linux\nlinux          /vmlinuz-linux\ninitrd         /initramfs-linux.img' >> /mnt/boot/loader/entries/arch.conf
+else
+  arch-chroot /mnt pacman --noconfirm -S grub
+  arch-chroot /mnt grub-install $efipart
+fi
 
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo
