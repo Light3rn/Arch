@@ -33,15 +33,15 @@ if (( $uefi == 1 ))
 then
   umount $efipart
   mkfs.fat -F32 $efipart
-  mount $efipart /boot
+  mkdir /mnt/boot
+  mount $efipart /mnt/boot
 fi
+
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
-#echo "fi_FI.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
-#echo "LANG=fi_FI.UTF-8" >> /mnt/etc/locale.conf
 echo "KEYMAP=fi" >> /mnt/etc/vconsole.conf
 echo "arch" >> /mnt/etc/hostname
 
