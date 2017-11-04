@@ -29,7 +29,13 @@ loadkeys fi
 umount $linuxpart
 mkfs.ext4 -F $linuxpart
 mount $linuxpart /mnt
-pacstrap /mnt base
+if (( $uefi == 1 )) 
+then
+  umount $efipart
+  mkfs.fat -F32 $efipart
+  mount $efipart /boot
+fi
+pacstrap /mnt basev
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
@@ -39,23 +45,16 @@ arch-chroot /mnt locale-gen
 echo "KEYMAP=fi" >> /mnt/etc/vconsole.conf
 echo "arch" >> /mnt/etc/hostname
 
-######
-
-if (( $uefi == 1 )) 
-then
-  umount $efipart
-  mkfs.fat -F32 $efipart
-  mount $efipart /boot
-  genfstab -U /boot >> /mnt/etc/fstab
-  bootctl --path=/boot install
-#  mkdir -p /boot/loader
-#  echo $'default  arch\ntimeout  4\neditor   0' >> /boot/loader/loader.conf
-else
-  arch-chroot /mnt pacman --noconfirm -S grub
-  arch-chroot /mnt grub-install $efipart
-fi
-
-######
+#if (( $uefi == 1 )) 
+#then
+#  genfstab -U /boot >> /mnt/etc/fstab
+#  bootctl --path=/boot install
+##  mkdir -p /boot/loader
+##  echo $'default  arch\ntimeout  4\neditor   0' >> /boot/loader/loader.conf
+#else
+#  arch-chroot /mnt pacman --noconfirm -S grub
+#  arch-chroot /mnt grub-install $efipart
+#fi
 
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo
