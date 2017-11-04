@@ -53,10 +53,10 @@ then
   mkdir -p /mnt/boot/EFI/Boot
   cp /mnt/usr/share/refind/refind_x64.efi /mnt/boot/EFI/Boot/bootx64.efi
   cp -r /mnt/usr/share/refind/drivers_x64/ /mnt/boot/EFI/Boot/
-  mkdir -p /mnt/boot/loader
-  echo $'default  arch\ntimeout  4\neditor   0' >> /mnt/boot/loader/loader.conf
-  mkdir -p /mnt/boot/loader/entries
-  echo $'title          Arch Linux\nlinux          /vmlinuz-linux\ninitrd         /initramfs-linux.img' >> /mnt/boot/loader/entries/arch.conf
+#  mkdir -p /mnt/boot/loader
+#  echo $'default  arch\ntimeout  4\neditor   0' >> /mnt/boot/loader/loader.conf
+#  mkdir -p /mnt/boot/loader/entries
+#  echo $'title          Arch Linux\nlinux          /vmlinuz-linux\ninitrd         /initramfs-linux.img' >> /mnt/boot/loader/entries/arch.conf
 else
   arch-chroot /mnt pacman --noconfirm -S grub
   arch-chroot /mnt grub-install $efipart
