@@ -50,9 +50,9 @@ if (( $uefi == 1 ))
 then
 #  genfstab -U /boot >> /mnt/etc/fstab
 #  bootctl --path=/boot install
-  mkdir -p /boot/EFI/Boot
-  cp /mnt/usr/share/refind/refind_x64.efi /boot/EFI/Boot/bootx64.efi
-  cp -r /mnt/usr/share/refind/drivers_x64/ /boot/EFI/Boot/
+  mkdir -p /mnt/boot/EFI/Boot
+  cp /mnt/usr/share/refind/refind_x64.efi /mnt/boot/EFI/Boot/bootx64.efi
+  cp -r /mnt/usr/share/refind/drivers_x64/ /mnt/boot/EFI/Boot/
   mkdir -p /mnt/boot/loader
   echo $'default  arch\ntimeout  4\neditor   0' >> /mnt/boot/loader/loader.conf
   mkdir -p /mnt/boot/loader/entries
