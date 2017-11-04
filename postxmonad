@@ -2,7 +2,7 @@
 # Run this script after archinstall -script
 
 #sudo dhcpcd enp0s3 enable
-sudo pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xmonad xmonad-contrib firefox
+arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xmonad xmonad-contrib firefox
 #sudo pacman --noconfirm -S weston plasma-meta plasma-wayland-session
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nxterm &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
