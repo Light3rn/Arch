@@ -54,6 +54,7 @@ arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
+arch-chroot /mnt systemctl enable dhcpcd.service
 set +x
 echo 'Give me root password:'
 arch-chroot /mnt passwd
