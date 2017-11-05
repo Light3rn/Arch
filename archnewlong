@@ -58,7 +58,7 @@ arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 #echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
 #arch-chroot /mnt systemctl enable dhcpcd.service
-arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xf86-input-synaptics xmonad xmonad-contrib dmenu vim wget feh xorg-xdpyinfo xcompmgr transset-df firefox
+arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xf86-input-synaptics xmonad xmonad-contrib dmenu vim wget feh xorg-xdpyinfo xcompmgr transset-df firefox lxdm
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nfeh --bg-scale ~/Downloads/archbackground.jpg &\nxcompmgr -c &\nxterm &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
 echo $'[ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" 0.45 >/dev/null' >> /mnt/home/$wantedname/.bashrc
@@ -70,6 +70,8 @@ cp ./.Xdefaults /mnt/home/$wantedname/
 cp ./70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 mkdir -p /mnt/home/$wantedname/Pictures/
 cp ./archbackground.jpg /mnt/home/$wantedname/Pictures/
+arch-chroot /mnt systemctl enable lxdm.service
+
 set +x
 echo 'Give me root password:'
 arch-chroot /mnt passwd
