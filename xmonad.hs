@@ -1,7 +1,6 @@
 import XMonad
-import XMonad.Config.Desktop
 
-main = xmonad desktopConfig
+main = xmonad def
     { terminal              = "xterm"
     , modMask               = mod4Mask
     , focusedBorderColor    = "#1793D1"
