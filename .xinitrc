@@ -1,5 +1,5 @@
 setxkbmap fi &
-feh --bg-scale ~/Pictures/archbackground.jpg &
+feh --bg-fill ~/Pictures/archbackground.jpg &
 xcompmgr -c &
 transset-df .45 &
 xterm &
