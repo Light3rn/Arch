@@ -58,7 +58,7 @@ arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sudo
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 #echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
-#arch-chroot /mnt systemctl enable dhcpcd.service
+arch-chroot /mnt systemctl enable dhcpcd.service
 arch-chroot /mnt pacman --noconfirm -S xorg-server xorg-xinit xterm xf86-video-intel xf86-input-synaptics xmonad xmonad-contrib dmenu vim wget feh xorg-xdpyinfo xcompmgr transset-df firefox
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 #echo $'setxkbmap fi &\nfeh --bg-scale ~/Downloads/archbackground.jpg &\nxcompmgr -c &\nxterm &\nexec xmonad' >> /mnt/home/$wantedname/.xinitrc
