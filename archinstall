@@ -72,6 +72,7 @@ cp ./.xinitrc /mnt/home/$wantedname/
 cp ./70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 mkdir -p /mnt/home/$wantedname/Pictures/
 cp ./archbackground.jpg /mnt/home/$wantedname/Pictures/
+chown -R $wantedname:users /home/$wantedname/
 
 set +x
 echo 'Give me root password:'
