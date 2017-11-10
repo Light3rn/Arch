@@ -33,7 +33,7 @@ pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
-arch-chroot /mnt locale-gen
+#arch-chroot /mnt locale-gen
 echo "KEYMAP=fi" >> /mnt/etc/vconsole.conf
 echo "arch" >> /mnt/etc/hostname
 
@@ -62,7 +62,6 @@ echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt pacman --noconfirm -S weston gnome
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 #arch-chroot /mnt pacman --noconfirm -S weston plasma-meta plasma-wayland-session
-mkdir -p /mnt/home/$wantedname/.xmonad
 #cp ./.vimrc /mnt/home/$wantedname/
 mkdir -p /mnt/home/$wantedname/Pictures/
 cp ./archbackground.jpg /mnt/home/$wantedname/Pictures/
