@@ -47,7 +47,7 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
-arch-chroot /mnt pacman --noconfirm -S sudo
+arch-chroot /mnt pacman --noconfirm -S sudo dialog wpa_supplicant
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 #echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
 
