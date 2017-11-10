@@ -1,0 +1,74 @@
+#!/bin/bash
+#-------------------------------------------------------------------------------
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
+# Run this script after your first boot with archlinux (as root)
+read -p 'Username: ' wantedname
+read -p 'Using UEFI? (1, 0): ' uefi
+if (( $uefi == 1))
+then
+read -p 'Give me EFI partition (ex. /dev/sda2): ' efipart
+else
+read -p 'Give me installation device (ex. /dev/sda): ' efipart
+fi
+read -p 'Give me Linux partition (ex. /dev/sda1): ' linuxpart
+
+set -x
+loadkeys fi
+umount $linuxpart
+mkfs.ext4 -F $linuxpart
+mount $linuxpart /mnt
+pacstrap /mnt base
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
+arch-chroot /mnt hwclock --systohc
+arch-chroot /mnt locale-gen
+echo "KEYMAP=fi" >> /mnt/etc/vconsole.conf
+echo "arch" >> /mnt/etc/hostname
+
+if (( $uefi == 1 )) 
+then
+  umount $efipart
+  mkfs.fat -F32 $efipart
+  mount $efipart /boot
+  genfstab -U /boot >> /mnt/etc/fstab
+  arch-chroot /mnt pacman --noconfirm -S refind-efi
+  mkdir -p /boot/EFI/Boot
+  cp /mnt/usr/share/refind/refind_x64.efi /boot/EFI/Boot/bootx64.efi
+  cp -r /mnt/usr/share/refind/drivers_x64/ /boot/EFI/Boot/
+  echo 'extra_kernel_version_strings linux-git,linux-lts,linux;' > /boot/EFI/Boot/refind.conf
+else
+  arch-chroot /mnt pacman --noconfirm -S grub
+  arch-chroot /mnt grub-install $efipart
+  arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
+fi
+
+arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
+echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
+#echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
+
+arch-chroot /mnt pacman --noconfirm -S weston gnome
+#echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
+#arch-chroot /mnt pacman --noconfirm -S weston plasma-meta plasma-wayland-session
+mkdir -p /mnt/home/$wantedname/.xmonad
+#cp ./.vimrc /mnt/home/$wantedname/
+mkdir -p /mnt/home/$wantedname/Pictures/
+cp ./archbackground.jpg /mnt/home/$wantedname/Pictures/
+arch-chroot chown -R $wantedname:users /home/$wantedname/
+
+set +x
+echo 'Give me root password:'
+arch-chroot /mnt passwd
+echo 'Give me user password:'
+arch-chroot /mnt passwd $wantedname
