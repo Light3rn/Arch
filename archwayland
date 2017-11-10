@@ -43,13 +43,15 @@ then
   mkfs.fat -F32 $efipart
   mount $efipart /boot
   genfstab -U /boot >> /mnt/etc/fstab
-  arch-chroot /mnt pacman --noconfirm -S refind-efi
-  mkdir -p /boot/EFI/Boot
-  cp /mnt/usr/share/refind/refind_x64.efi /boot/EFI/Boot/bootx64.efi
-  cp -r /mnt/usr/share/refind/drivers_x64/ /boot/EFI/Boot/
-  echo 'extra_kernel_version_strings linux-git,linux-lts,linux;' > /boot/EFI/Boot/refind.conf
-else
+  #arch-chroot /mnt pacman --noconfirm -S refind-efi
+  #mkdir -p /boot/EFI/Boot
+  #cp /mnt/usr/share/refind/refind_x64.efi /boot/EFI/Boot/bootx64.efi
+  #cp -r /mnt/usr/share/refind/drivers_x64/ /boot/EFI/Boot/
+  #echo 'extra_kernel_version_strings linux-git,linux-lts,linux;' > /boot/EFI/Boot/refind.conf
   arch-chroot /mnt pacman --noconfirm -S grub
+  
+else
+  arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
   arch-chroot /mnt grub-install $efipart
   arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
 fi
