@@ -51,7 +51,7 @@ arch-chroot /mnt pacman --noconfirm -S sudo dialog wpa_supplicant
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 #echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
 
-####arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland gnome
+arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland gnome
 ###echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 #arch-chroot /mnt pacman --noconfirm -S weston plasma-meta plasma-wayland-session
 #cp ./.vimrc /mnt/home/$wantedname/
