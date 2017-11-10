@@ -63,6 +63,7 @@ arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland gnome
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 #arch-chroot /mnt pacman --noconfirm -S weston plasma-meta plasma-wayland-session
 #cp ./.vimrc /mnt/home/$wantedname/
+echo "en_US" >> /mnt/home/$wantedname/.config/user-dirs.locale
 mkdir -p /mnt/home/$wantedname/Pictures/
 cp ./archbackground.jpg /mnt/home/$wantedname/Pictures/
 arch-chroot chown -R $wantedname:users /home/$wantedname/
