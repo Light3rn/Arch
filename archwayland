@@ -35,7 +35,8 @@ genfstab -U /mnt/boot >> /mnt/etc/fstab
 
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
-#arch-chroot /mnt locale-gen
+echo $'en_US.UTF-8 UTF-8\nfi_FI.UTF-8 UTF-8' >> /mnt/etc/locale.gen
+arch-chroot /mnt locale-gen
 #echo $'KEYMAP="fi-winkeys"\nFONT="eurlatgr"' >> /mnt/etc/vconsole.conf
 #echo $'KEYMAP=fi\nX11-KEYMAP=fi' >> /mnt/etc/vconsole.conf
 #setxkbmap fi
