@@ -36,7 +36,7 @@ genfstab -U /mnt/boot >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
 #arch-chroot /mnt locale-gen
-echo $'KEYMAP="fi-winkeys"\nFONT="eurlatgr"' >> /mnt/etc/vconsole.conf
+#echo $'KEYMAP="fi-winkeys"\nFONT="eurlatgr"' >> /mnt/etc/vconsole.conf
 echo "localhost.localdomain" >> /mnt/etc/hostname
 
 arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
