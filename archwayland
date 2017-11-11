@@ -38,6 +38,8 @@ arch-chroot /mnt hwclock --systohc
 #arch-chroot /mnt locale-gen
 #echo $'KEYMAP="fi-winkeys"\nFONT="eurlatgr"' >> /mnt/etc/vconsole.conf
 #setxkbmap fi
+#localectl set-keymap fi
+#localectl set-x11-keymap fi
 #echo "localhost.localdomain" >> /mnt/etc/hostname
 
 arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
