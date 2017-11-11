@@ -44,7 +44,7 @@ arch-chroot /mnt locale-gen
 #localectl set-x11-keymap fi
 #echo "localhost.localdomain" >> /mnt/etc/hostname
 
-arch-chroot /mnt pacman --noconfirm -S grub efibootmgr
+arch-chroot /mnt pacman --noconfirm -S grub
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 #arch-chroot /mnt efibootmgr -c -d /dev/sda -p 1 -L "Archlol" -l "/boot/EFI/grub/grubx64.efi"
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
@@ -56,7 +56,7 @@ arch-chroot /mnt pacman --noconfirm -S sudo dialog wpa_supplicant
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 #echo "127.0.1.1	arch.localdomain	arch" >> /mnt/etc/hosts
 
-arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland gnome
+arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland gnome firefox
 # gnome-software
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 #arch-chroot /mnt pacman --noconfirm -S weston plasma-meta plasma-wayland-session
