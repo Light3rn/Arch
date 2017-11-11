@@ -1,1 +1,2 @@
-#arch-chroot /mnt gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
+gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
