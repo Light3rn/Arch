@@ -57,11 +57,7 @@ if (( $uefi == 1)); then
 arch-chroot /mnt bootctl --path=/boot install
 rm /mnt/boot/loader/loader.conf
 echo $'default  arch\ntimeout  0' >> /mnt/boot/loader/loader.conf
-echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=/dev/sda2 rw' >> /mnt/boot/loader/entries/arch.conf
-
-
-
-
+echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=/dev/sd'${diskletter}'2 rw' >> /mnt/boot/loader/entries/arch.conf
 else
 arch-chroot /mnt pacman --noconfirm -S grub
 arch-chroot /mnt grub-install $diskpart
@@ -75,12 +71,12 @@ echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
 arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland firefox networkmanager ntfs-3g qbittorrent
 if (( $wm == 1)); then
-###arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
-###echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
+arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
+echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
 else
-###arch-chroot /mnt pacman --noconfirm -S gnome
-###arch-chroot /mnt systemctl enable NetworkManager.service
-###echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
+arch-chroot /mnt pacman --noconfirm -S gnome
+#arch-chroot /mnt systemctl enable NetworkManager.service
+echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 fi
 
 #cp ./.vimrc /mnt/home/$wantedname/
