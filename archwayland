@@ -18,7 +18,7 @@ read -p 'Username: ' wantedname
 read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskletter
 diskpart="/dev/sd$diskletter"
 read -p 'Using UEFI? (1, 0): ' uefi
-read -p 'Enlightenment or Gnome? (1 Enlightenment, 2 Gnome): ' wm
+read -p 'Gnome or Enlightenment? (1 Gnome, 2 Enlightenment): ' wm
 
 
 if (( $uefi == 1)); then
@@ -71,12 +71,12 @@ echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
 arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland firefox networkmanager ntfs-3g qbittorrent
 if (( $wm == 1)); then
-arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
-echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
-else
 arch-chroot /mnt pacman --noconfirm -S gnome
 #arch-chroot /mnt systemctl enable NetworkManager.service
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
+else
+arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
+echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
 fi
 
 #cp ./.vimrc /mnt/home/$wantedname/
