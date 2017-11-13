@@ -16,9 +16,12 @@
 # Run this script after your first boot with archlinux (as root)
 read -p 'Username: ' wantedname
 
-read -p 'Give me installation device (ex. /dev/sda): ' diskpart
-read -p 'Give me EFI partition (ex. /dev/sda1): ' efipart
-read -p 'Give me Linux partition (ex. /dev/sda2): ' linuxpart
+read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskletter
+diskpart="/dev/sd$diskletter"
+efipart="${diskpart}1"
+linuxpart="${diskpart}2"
+read -p 'Using UEFI? (1, 0): ' uefi
+
 
 set -x
 loadkeys fi
