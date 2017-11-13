@@ -15,26 +15,39 @@
 #-------------------------------------------------------------------------------
 # Run this script after your first boot with archlinux (as root)
 read -p 'Username: ' wantedname
-
 read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskletter
 diskpart="/dev/sd$diskletter"
-efipart="${diskpart}1"
-linuxpart="${diskpart}2"
 read -p 'Using UEFI? (1, 0): ' uefi
 
+if (( $uefi == 1)); then
+efipart="${diskpart}1"
+linuxpart="${diskpart}2"
+else
+linuxpart="${diskpart}1"
+fi
+
+if (( $uefi == 1)); then
+else
+fi
 
 set -x
 loadkeys fi
 umount $linuxpart
 mkfs.ext4 -F $linuxpart
+mount $linuxpart /mnt
+if (( $uefi == 1)); then
 umount $efipart
 mkfs.fat -F32 $efipart
-mount $linuxpart /mnt
 mkdir -p /mnt/boot
 mount $efipart /mnt/boot
+fi
+
 pacstrap /mnt base
+
 genfstab -U /mnt >> /mnt/etc/fstab
+if (( $uefi == 1)); then
 genfstab -U /mnt/boot >> /mnt/etc/fstab
+fi
 
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
