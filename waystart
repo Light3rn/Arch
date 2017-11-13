@@ -24,3 +24,6 @@ sudo modprobe -a vboxdrv
 echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
 #add user to vboxusers -group
 sudo gpasswd -a $USER vboxusers
+
+sudo mount /dev/sdb1 ~/SSD
+sudo genfstab -U ~/SSD >> /etc/fstab
