@@ -2,22 +2,25 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
 gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
 #tweak windows: turn on minimize, maximize
 #tweak extensions user themes on
-#AURia varten
+#For aur
 sudo pacman -S base-devel
 
-#mkdir ~/builds
-#gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
-#cd ~/builds
-#git clone https://aur.archlinux.org/cower.git
-#cd ~/builds/cower
-#makepkg -cis
-#cd ~/builds
-#git clone https://aur.archlinux.org/pacaur.git
-#cd ~/builds/cower
-#makepkg -cis
+mkdir ~/builds
+gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
+cd ~/builds
+git clone https://aur.archlinux.org/cower.git
+cd ~/builds/cower
+makepkg -cis
+cd ~/builds
+git clone https://aur.archlinux.org/pacaur.git
+cd ~/builds/cower
+makepkg -cis
 
-#choose 2, reboot to load, manually sudo modprobe -a vboxdrv
+#install, choose 2
 sudo pacman -S virtualbox
+#start manually here or reboot
 sudo modprobe -a vboxdrv
+#add modules for loading on startup
 echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
+#add user to vboxusers -group
 sudo gpasswd -a $USER vboxusers
