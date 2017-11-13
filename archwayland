@@ -53,19 +53,14 @@ arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
 echo $'en_US.UTF-8 UTF-8\nfi_FI.UTF-8 UTF-8' >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
-#echo $'KEYMAP="fi-winkeys"\nFONT="eurlatgr"' >> /mnt/etc/vconsole.conf
-#echo $'KEYMAP=fi\nX11-KEYMAP=fi' >> /mnt/etc/vconsole.conf
-#setxkbmap fi
-#localectl set-keymap fi
-#localectl set-x11-keymap fi
-#echo "localhost.localdomain" >> /mnt/etc/hostname
 
 arch-chroot /mnt pacman --noconfirm -S grub
+if (( $uefi == 1)); then
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-#arch-chroot /mnt efibootmgr -c -d /dev/sda -p 1 -L "Archlol" -l "/boot/EFI/grub/grubx64.efi"
+else
+arch-chroot /mnt grub-install $diskpart
+fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
-
-
 
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 arch-chroot /mnt pacman --noconfirm -S sudo dialog wpa_supplicant
@@ -74,9 +69,7 @@ echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
 arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland gnome firefox networkmanager ntfs-3g qbittorrent
 arch-chroot /mnt systemctl enable NetworkManager.service
-# gnome-software
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
-#arch-chroot /mnt pacman --noconfirm -S weston plasma-meta plasma-wayland-session
 #cp ./.vimrc /mnt/home/$wantedname/
 #arch-chroot /mnt gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
 # gsettings list-recursively | grep sources
