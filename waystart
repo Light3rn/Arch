@@ -16,10 +16,8 @@ sudo pacman -S base-devel
 #cd ~/builds/cower
 #makepkg -cis
 
-
-#sudo pacman -S virtualbox
 #choose 2, reboot to load, manually sudo modprobe -a vboxdrv
-
-1) sudo modprobe -a vboxdrv
-2) echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
-3) sudo gpasswd -a $USER vboxusers
+sudo pacman -S virtualbox
+sudo modprobe -a vboxdrv
+echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
+sudo gpasswd -a $USER vboxusers
