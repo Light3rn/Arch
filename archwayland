@@ -26,10 +26,6 @@ else
 linuxpart="${diskpart}1"
 fi
 
-if (( $uefi == 1)); then
-else
-fi
-
 set -x
 loadkeys fi
 umount $linuxpart
@@ -53,7 +49,6 @@ arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
 echo $'en_US.UTF-8 UTF-8\nfi_FI.UTF-8 UTF-8' >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
-
 arch-chroot /mnt pacman --noconfirm -S grub
 if (( $uefi == 1)); then
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
