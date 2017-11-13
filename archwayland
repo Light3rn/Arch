@@ -51,10 +51,19 @@ arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 arch-chroot /mnt hwclock --systohc
 echo $'en_US.UTF-8 UTF-8\nfi_FI.UTF-8 UTF-8' >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
-arch-chroot /mnt pacman --noconfirm -S grub
+#arch-chroot /mnt pacman --noconfirm -S grub
 if (( $uefi == 1)); then
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+#arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+arch-chroot /mnt bootctl --path=/boot install
+rm /mnt/boot/loader/loader.conf
+echo $'default  arch\ntimeout  0' >> /mnt/boot/loader/loader.conf
+echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=/dev/sda2 rw' >> /mnt/boot/loader/entries/arch.conf
+
+
+
+
 else
+arch-chroot /mnt pacman --noconfirm -S grub
 arch-chroot /mnt grub-install $diskpart
 fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
@@ -66,12 +75,12 @@ echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
 arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland firefox networkmanager ntfs-3g qbittorrent
 if (( $wm == 1)); then
-arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
-echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
+###arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
+###echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
 else
-arch-chroot /mnt pacman --noconfirm -S gnome
-arch-chroot /mnt systemctl enable NetworkManager.service
-echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
+###arch-chroot /mnt pacman --noconfirm -S gnome
+###arch-chroot /mnt systemctl enable NetworkManager.service
+###echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 fi
 
 #cp ./.vimrc /mnt/home/$wantedname/
