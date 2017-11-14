@@ -1,7 +1,8 @@
-gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
-gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
-#tweak windows: turn on minimize, maximize
-#tweak extensions user themes on
+#Change languages and local formats
+#Code example: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
+#Code example: gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
+#Tweak windows: turn on minimize, maximize
+#Tweak extensions user themes on
 #For aur
 sudo pacman -S base-devel
 
