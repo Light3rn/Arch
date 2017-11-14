@@ -9,9 +9,11 @@ Arch install script
 6) cd lightern-arch-XXXXXXX
 
 Xorg + XMonad:
+
 7) Chmod +x archinstall
 8) ./archinstall
 
 Wayland + Gnome:
+
 9) Chmod +x archwayland
 10) ./archwayland
