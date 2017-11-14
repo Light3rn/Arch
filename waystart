@@ -2,19 +2,19 @@
 #Code example: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
 #Code example: gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
 #Tweak windows: turn on minimize, maximize
-#Tweak extensions user themes on
+#Tweak extensions user themes on, Launch new instance
 #For aur
 sudo pacman -S base-devel
 
-mkdir ~/builds
+mkdir builds 
 gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
-cd ~/builds
+cd builds
 git clone https://aur.archlinux.org/cower.git
-cd ~/builds/cower
+cd cower
 makepkg -cis
-cd ~/builds
+cd ..
 git clone https://aur.archlinux.org/pacaur.git
-cd ~/builds/cower
+cd pacaur
 makepkg -cis
 
 #install, choose 2
@@ -27,4 +27,6 @@ echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
 sudo gpasswd -a $USER vboxusers
 
 sudo mount /dev/sdb1 ~/SSD
+
+pacaur -S gnome-shell-extension-activities-config
 
