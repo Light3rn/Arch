@@ -1,4 +1,4 @@
-# Light3rn Arch
+# Light3rn Arch install script
 Arch install script
 
 1) Boot Installation
@@ -10,10 +10,10 @@ Arch install script
 
 Xorg + XMonad:
 
-7) Chmod +x archinstall
-8) ./archinstall
+7) Chmod +x archwayland
+8) ./archwayland
 
-Wayland + Gnome:
+Wayland + Gnome or Enlightenment:
 
-9) Chmod +x archwayland
-10) ./archwayland
+9) Chmod +x archinstall
+10) ./archinstall
