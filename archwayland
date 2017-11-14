@@ -13,7 +13,6 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
-# Run this script after your first boot with archlinux (as root)
 # Boot Installation
 # If UEFI, partition with fdisk: /dev/sdX1 EFI and /dev/sdX2 Linux (using GPT)
 # If Non-UEFI, partition with fdisk: /dev/sdX1
