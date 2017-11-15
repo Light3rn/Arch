@@ -1,0 +1,61 @@
+#!/bin/bash
+#-------------------------------------------------------------------------------
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
+# Boot Installation
+# If UEFI, partition with fdisk: /dev/sdX1 EFI and /dev/sdX2 Linux (using GPT)
+# If Non-UEFI, partition with fdisk: /dev/sdX1
+# wget https://github.com/lightern/arch/tarball/master -O - | tar xz
+# dir (to check folder)
+# cd lightern-arch-XXXXXXX
+# Chmod +x archwayland
+# Run with: 
+# ./archwayland
+
+## Ask for parameters and define partitions
+read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskletter
+diskpart="/dev/sd$diskletter"
+read -p 'Using UEFI? (1, 0): ' uefi
+read -p 'Gnome or Enlightenment? (1 Gnome, 2 Enlightenment): ' wm
+if (( $uefi == 1)); then
+efipart="${diskpart}1"
+linuxpart="${diskpart}2"
+else
+linuxpart="${diskpart}1"
+fi
+
+## Verbose
+set -x
+
+## Format and mount partitions
+umount $linuxpart
+mount $linuxpart /mnt
+if (( $uefi == 1)); then
+umount $efipart
+mount $efipart /mnt/boot
+fi
+
+## Install systemd startup or bootloader
+if (( $uefi == 1)); then
+## Add secure boot
+arch-chroot /mnt pacman -S prebootloader efibootmgr
+mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
+cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
+arch-chroot /mnt efibootmgr -c -l /mnt/boot/EFI/systemd/HashTool.efi -L HashTool
+arch-chroot /mnt efibootmgr -c -l /mnt/boot/EFI/systemd/PreLoader.efi -L PreLoader
+else
+fi
+
+## Disable verbosing and ask for password for root and the user
+set +x
