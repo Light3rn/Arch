@@ -79,6 +79,14 @@ rm /mnt/boot/loader/loader.conf
 echo $'default  arch\ntimeout  0' >> /mnt/boot/loader/loader.conf
 partuuid=$(blkid | grep $linuxpart | sed 's/.*PARTUUID="//g' | sed 's/\"//g')
 echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=PARTUUID='${partuuid}' rw' >> /mnt/boot/loader/entries/arch.conf
+
+## Add secure boot
+arch-chroot /mnt pacman -S prebootloader efibootmgr
+mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
+cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
+arch-chroot /mnt efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
+arch-chroot /mnt efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
+
 else
 arch-chroot /mnt pacman --noconfirm -S grub
 arch-chroot /mnt grub-install $diskpart
