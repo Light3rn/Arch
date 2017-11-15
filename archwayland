@@ -84,8 +84,8 @@ echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.i
 arch-chroot /mnt pacman -S prebootloader efibootmgr
 mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
 cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
-arch-chroot /mnt efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
-arch-chroot /mnt efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
+arch-chroot /mnt efibootmgr -c -l /mnt/boot/EFI/systemd/HashTool.efi -L HashTool
+arch-chroot /mnt efibootmgr -c -l /mnt/boot/EFI/systemd/PreLoader.efi -L PreLoader
 
 else
 arch-chroot /mnt pacman --noconfirm -S grub
