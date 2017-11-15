@@ -49,7 +49,7 @@ fi
 ## Install systemd startup or bootloader
 if (( $uefi == 1)); then
 ## Add secure boot
-arch-chroot /mnt pacman -S prebootloader efibootmgr
+arch-chroot /mnt pacman -S efitools
 mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
 cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
 arch-chroot /mnt efibootmgr -c -l /mnt/boot/EFI/systemd/HashTool.efi -L HashTool
