@@ -80,8 +80,8 @@ wget https://blog.hansenpartnership.com/wp-uploads/2013/HashTool.efi -P /mnt/boo
 #arch-chroot /mnt efibootmgr --disk $diskpart --part 1 --create --gpt --label "PreLoader" --loader /vmlinuz-linux --unicode "root=/dev/sdBZ rw initrd=/initramfs-linux.img"
 
 #Where /dev/sdX and Y are the disk and partition where the ESP is located. Change the root= parameter to reflect your Linux root (disk UUIDs can also be used). Note that the -u/--unicode argument in double quotes is just the list of kernel parameters, so you may need to add additional parameters e.g. for suspend to disk or microcode.
-###efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
-###efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
+arch-chroot /mnt efibootmgr -c -l /boot/EFI/systemd/HashTool.efi -L HashTool
+arch-chroot /mnt efibootmgr -c -l /boot/EFI/systemd/PreLoader.efi -L PreLoader
 ##exiting arch-chroot
 
 
