@@ -1,29 +1,5 @@
-#!/bin/bash
-#-------------------------------------------------------------------------------
-#This program is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
-#
-#This program is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-#
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#-------------------------------------------------------------------------------
-# Boot Installation
-# If UEFI, partition with fdisk: /dev/sdX1 EFI and /dev/sdX2 Linux (using GPT)
-# If Non-UEFI, partition with fdisk: /dev/sdX1
-# wget https://github.com/lightern/arch/tarball/master -O - | tar xz
-# dir (to check folder)
-# cd lightern-arch-XXXXXXX
-# Chmod +x archwayland
-# Run with: 
-# ./archwayland
-
 ## Ask for parameters and define partitions
+read -p 'Username: ' wantedname
 read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskletter
 diskpart="/dev/sd$diskletter"
 read -p 'Using UEFI? (1, 0): ' uefi
@@ -40,21 +16,56 @@ set -x
 
 ## Format and mount partitions
 umount $linuxpart
+mkfs.ext4 -F $linuxpart
 mount $linuxpart /mnt
 if (( $uefi == 1)); then
 umount $efipart
+mkfs.fat -F32 $efipart
+mkdir -p /mnt/boot
 mount $efipart /mnt/boot
 fi
 
+## Install base
+pacstrap /mnt base
+
+## Add mount points to fstab
+genfstab -U /mnt >> /mnt/etc/fstab
+if (( $uefi == 1)); then
+genfstab -U /mnt/boot >> /mnt/etc/fstab
+fi
+
+## Change time to local time and sync clock
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
+arch-chroot /mnt hwclock --systohc
+
+## Add english and finnish to locale and generate languages for future use
+echo $'en_US.UTF-8 UTF-8\nfi_FI.UTF-8 UTF-8' >> /mnt/etc/locale.gen
+arch-chroot /mnt locale-gen
+
 ## Install systemd startup or bootloader
 if (( $uefi == 1)); then
+## Use the next 3 lines instead if the 4 default lines don't work and comment them out
+## arch-chroot /mnt pacman --noconfirm -S grub
+## arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+## arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
+arch-chroot /mnt bootctl --path=/boot install
+#arch-chroot /mnt bootctl install
+rm /mnt/boot/loader/loader.conf
+echo $'default  arch\ntimeout  0' >> /mnt/boot/loader/loader.conf
+partuuid=$(blkid | grep $linuxpart | sed 's/.*PARTUUID="//g' | sed 's/\"//g')
+echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=PARTUUID='${partuuid}' rw' >> /mnt/boot/loader/entries/arch.conf
+
 ## Add secure boot
-arch-chroot /mnt pacman --noconfirm -S efitools efibootmgr
-mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
-cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
-arch-chroot /mnt efibootmgr -c -l /mnt/boot/EFI/systemd/HashTool.efi -L HashTool
-arch-chroot /mnt efibootmgr -c -l /mnt/boot/EFI/systemd/PreLoader.efi -L PreLoader
+#arch-chroot /mnt pacman -S prebootloader efibootmgr
+#mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
+#cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
+#arch-chroot /mnt efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
+#arch-chroot /mnt efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
+
 else
+arch-chroot /mnt pacman --noconfirm -S grub
+arch-chroot /mnt grub-install $diskpart
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
 fi
 
 ## Disable verbosing and ask for password for root and the user
