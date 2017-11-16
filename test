@@ -26,7 +26,7 @@ mount $efipart /mnt/boot
 fi
 
 ## Install base
-pacstrap /mnt base
+pacstrap /mnt base base-devel
 
 ## Add mount points to fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -56,8 +56,15 @@ partuuid=$(blkid | grep $linuxpart | sed 's/.*PARTUUID="//g' | sed 's/\"//g')
 echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=PARTUUID='${partuuid}' rw' >> /mnt/boot/loader/entries/arch.conf
 
 ## Add secure boot
-#arch-chroot /mnt pacman -S prebootloader efibootmgr
-#mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
+## added base-devel to pacstrap
+#arch-chroot /mnt 
+#pacman --noconfirm -S efibootmgr git 
+#mv /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
+#mkdir -p /home/${wantedname}/builds
+#cd /home/${wantedname}/builds
+#git clone https://aur.archlinux.org/preloader-signed.git
+#cd preloader-signed
+#makepkg -cis
 #cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
 #arch-chroot /mnt efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
 #arch-chroot /mnt efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
