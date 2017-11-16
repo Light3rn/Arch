@@ -49,8 +49,8 @@ arch-chroot /mnt pacman --noconfirm -S sudo
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
 # Putting in password already for later use
-arch-chroot /mnt echo -e "${password}\n${password}\n" | passwd
-arch-chroot /mnt echo -e "${password}\n${password}\n" | passwd $wantedname
+echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd
+echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd $wantedname
 
 ## Install systemd startup or bootloader
 if (( $uefi == 1)); then
@@ -67,12 +67,10 @@ echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.i
 
 ## Add secure boot
 ## added base-devel to pacstrap, put user add before secure boot installation for makepkg, put user password adding earlier
-arch-chroot /mnt 
-pacman --noconfirm -S efibootmgr git 
-mv /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
-sudo -u $wantedname mkdir -p /home/${wantedname}/builds
-#cd /home/${wantedname}/builds
-#sudo -u $wantedname git clone https://aur.archlinux.org/preloader-signed.git
+arch-chroot /mnt pacman --noconfirm -S efibootmgr git 
+mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
+arch-chroot /mnt sudo -u $wantedname mkdir -p /home/${wantedname}/builds
+arch-chroot sudo -u $wantedname git clone https://aur.archlinux.org/preloader-signed.git /home/${wantedname}/builds
 #cd preloader-signed
 #sudo -u $wantedname makepkg -cis
 #cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
