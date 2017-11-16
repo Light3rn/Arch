@@ -43,6 +43,6 @@ pacaur -S gnome-shell-extension-dash-to-dock
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 
-sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus
+sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus primus libvdpau
 #also run this:
 primusrun %command%
