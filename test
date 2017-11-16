@@ -42,6 +42,11 @@ arch-chroot /mnt hwclock --systohc
 echo $'en_US.UTF-8 UTF-8\nfi_FI.UTF-8 UTF-8' >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
 
+## Add user to wheel group and sudoers (also install sudo)
+arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
+arch-chroot /mnt pacman --noconfirm -S sudo
+echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
+
 ## Install systemd startup or bootloader
 if (( $uefi == 1)); then
 ## Use the next 3 lines instead if the 4 default lines don't work and comment them out
@@ -56,11 +61,11 @@ partuuid=$(blkid | grep $linuxpart | sed 's/.*PARTUUID="//g' | sed 's/\"//g')
 echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=PARTUUID='${partuuid}' rw' >> /mnt/boot/loader/entries/arch.conf
 
 ## Add secure boot
-## added base-devel to pacstrap
+## added base-devel to pacstrap, put user add before secure boot installation for makepkg
 #arch-chroot /mnt 
 #pacman --noconfirm -S efibootmgr git 
 #mv /boot/EFI/systemd/systemd-bootx64.efi /boot/EFI/systemd/loader.efi
-#mkdir -p /home/${wantedname}/builds
+#sudo -u $wantedname mkdir -p /home/${wantedname}/builds
 #cd /home/${wantedname}/builds
 #git clone https://aur.archlinux.org/preloader-signed.git
 #cd preloader-signed
