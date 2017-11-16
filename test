@@ -69,7 +69,7 @@ echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.i
 #cd /home/${wantedname}/builds
 #git clone https://aur.archlinux.org/preloader-signed.git
 #cd preloader-signed
-#makepkg -cis
+#sudo -u $wantedname makepkg -cis
 #cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
 #arch-chroot /mnt efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
 #arch-chroot /mnt efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
