@@ -29,6 +29,7 @@ read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskle
 diskpart="/dev/sd$diskletter"
 read -p 'Using UEFI? (1, 0): ' uefi
 read -p 'Gnome or Enlightenment? (1 Gnome, 2 Enlightenment): ' wm
+read -p 'Password: ' password
 if (( $uefi == 1)); then
 efipart="${diskpart}1"
 linuxpart="${diskpart}2"
@@ -51,7 +52,7 @@ mount $efipart /mnt/boot
 fi
 
 ## Install base
-pacstrap /mnt base
+pacstrap /mnt base base-devel
 
 ## Add mount points to fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -111,9 +112,13 @@ arch-chroot /mnt pacman --noconfirm -S firefox qbittorrent git
 ## Send the background picture to home folder for using :)
 cp ./archbackground.jpg /mnt/home/$wantedname/
 
+## Make autoboot
+mkdir -p /mnt/etc/systemd/system/getty@tty1.service.d/
+echo $'[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin '${wantedname}$' --noclear %I $TERM' >> /mnt/etc/systemd/system/getty@tty1.service.d/override.conf
+
+# Insert passwords
+echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd
+echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd $wantedname
+
 ## Disable verbosing and ask for password for root and the user
 set +x
-echo 'Give me root password:'
-arch-chroot /mnt passwd
-echo 'Give me user password:'
-arch-chroot /mnt passwd $wantedname
