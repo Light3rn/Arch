@@ -43,4 +43,4 @@ pacaur -S gnome-shell-extension-dash-to-dock
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 
-sudo pacman -S lib32-nvidia-utils steam
+sudo pacman -S lib32-nvidia-utils ttf-liberation steam
