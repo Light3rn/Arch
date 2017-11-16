@@ -75,10 +75,15 @@ sudo -u $wantedname mkdir -p /home/${wantedname}/builds
 #sudo -u $wantedname git clone https://aur.archlinux.org/preloader-signed.git
 #cd preloader-signed
 #sudo -u $wantedname makepkg -cis
-#cp /mnt/usr/lib/prebootloader/* /mnt/boot/EFI/systemd/
-#arch-chroot /mnt efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
-#arch-chroot /mnt efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
+#cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
+#efibootmgr --disk $diskpart --part 1 --create --label "PreLoader" --loader /EFI/systemd/PreLoader.efi
+###efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
+###efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
 ##exiting arch-chroot
+
+
+
+
 exit
 else
 arch-chroot /mnt pacman --noconfirm -S grub
