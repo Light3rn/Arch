@@ -67,13 +67,15 @@ echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.i
 
 ## Add secure boot
 ## added base-devel to pacstrap, put user add before secure boot installation for makepkg, put user password adding earlier
-arch-chroot /mnt pacman --noconfirm -S efibootmgr git 
+arch-chroot /mnt pacman --noconfirm -S efibootmgr
 mv /mnt/boot/EFI/systemd/systemd-bootx64.efi /mnt/boot/EFI/systemd/loader.efi
-arch-chroot /mnt sudo -u $wantedname mkdir -p /home/${wantedname}/builds
-arch-chroot sudo -u $wantedname git clone https://aur.archlinux.org/preloader-signed.git /home/${wantedname}/builds
-#cd preloader-signed
-#sudo -u $wantedname makepkg -cis
-#cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
+###arch-chroot /mnt sudo -u $wantedname mkdir -p /home/${wantedname}/builds
+###arch-chroot /mnt sudo -u $wantedname git clone https://aur.archlinux.org/preloader-signed.git /home/${wantedname}/builds/preloader-signed
+###cd preloader-signed
+###sudo -u $wantedname makepkg -cis
+###cp /usr/share/preloader-signed/{PreLoader,HashTool}.efi /boot/EFI/systemd
+wget https://blog.hansenpartnership.com/wp-uploads/2013/PreLoader.efi -P /mnt/boot/EFI/systemd
+wget https://blog.hansenpartnership.com/wp-uploads/2013/HashTool.efi -P /mnt/boot/EFI/systemd
 #efibootmgr --disk $diskpart --part 1 --create --label "PreLoader" --loader /EFI/systemd/PreLoader.efi
 ###efibootmgr -c -l /EFI/systemd/HashTool.efi -L HashTool
 ###efibootmgr -c -l /EFI/systemd/PreLoader.efi -L PreLoader
