@@ -7,13 +7,6 @@ Arch install script
 4) wget https://github.com/lightern/arch/tarball/master -O - | tar xz
 5) dir (to check folder)
 6) cd lightern-arch-XXXXXXX
-
-Xorg + XMonad:
-
-7) Chmod +x archwayland
-8) ./archwayland
-
-Wayland + Gnome or Enlightenment:
-
-9) Chmod +x archinstall
-10) ./archinstall
+7) Chmod +x install
+8) ./install
+9) Follow instructions
