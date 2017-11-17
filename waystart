@@ -46,3 +46,5 @@ Include = /etc/pacman.d/mirrorlist
 sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus primus libvdpau
 #also run this:
 primusrun %command%
+removed primus lib32-primus lib32-nvidia-utils steam
+installed nvidia and removed all nvidia
