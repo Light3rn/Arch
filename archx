@@ -18,7 +18,7 @@ cp ./dotfiles/.vimrc /mnt/home/$wantedname/
 cp ./dotfiles/.xmobarrc /mnt/home/$wantedname/
 fi
 if (( $wm == 4)); then
-arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server wpa_supplicant dialog xf86-video-intel openbox obconf xterm chromium thunar cairo-dock cairo-dock-plug-ins
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server wpa_supplicant dialog xf86-video-intel openbox obconf xterm chromium thunar xcompmgr cairo-dock cairo-dock-plug-ins
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 mkdir -p /mnt/home/$wantedname/.config/openbox/
