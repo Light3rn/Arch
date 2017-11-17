@@ -25,9 +25,10 @@ mkdir -p /mnt/home/$wantedname/.config/openbox/
 echo $'cairo-dock &' >> /mnt/home/$wantedname/.config/openbox/autostart
 fi
 if (( $wm == 5)); then
-arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server xf86-video-intel lxqt
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server xf86-video-intel lxqt connman 
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec startlxqt' >> /mnt/home/$wantedname/.xinitrc
+arch-chroot /mnt systemctl enable connman.service
 fi
 
 #arch-chroot /mnt systemctl enable dhcpcd.service
