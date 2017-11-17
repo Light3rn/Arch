@@ -16,18 +16,24 @@ mkdir -p /mnt/home/$wantedname/.xmonad
 cp ./dotfiles/xmonad.hs /mnt/home/$wantedname/.xmonad/
 cp ./dotfiles/.vimrc /mnt/home/$wantedname/
 cp ./dotfiles/.xmobarrc /mnt/home/$wantedname/
-else
+fi
+if (( $wm == 4)); then
 arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server openbox obconf xterm cairo-dock cairo-dock-plug-ins networkmanager firefox thunar
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 mkdir -p /mnt/home/$wantedname/.config/openbox/
 echo $'cairo-dock &' >> /mnt/home/$wantedname/.config/openbox/autostart
 fi
+if (( $wm == 5)); then
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server lxqt
+echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
+echo $'setxkbmap fi &\nexec startlxqt' >> /mnt/home/$wantedname/.xinitrc
+fi
 
 #arch-chroot /mnt systemctl enable dhcpcd.service
-cp ./dotfiles/.Xdefaults /mnt/home/$wantedname/
+#cp ./dotfiles/.Xdefaults /mnt/home/$wantedname/
 #cp ./dotfiles/.xinitrc /mnt/home/$wantedname/
-cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
+#cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 
 cp ./archbackground.jpg /mnt/home/$wantedname/Downloads/
 arch-chroot chown -R $wantedname /home/$wantedname/
