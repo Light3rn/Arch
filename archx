@@ -29,6 +29,7 @@ arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server xf86-video-intel l
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec startlxqt' >> /mnt/home/$wantedname/.xinitrc
 arch-chroot /mnt systemctl enable connman.service
+cp ./dotfiles/lxqt/script /mnt/home/$wantedname/
 fi
 
 #arch-chroot /mnt systemctl enable dhcpcd.service
@@ -37,7 +38,6 @@ fi
 #cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 
 cp ./dotfiles/archbackground.jpg /mnt/home/$wantedname/Downloads/
-cp ./dotfiles/lxqt/script /mnt/home/$wantedname/
 arch-chroot chown -R $wantedname /home/$wantedname/
 
 set +x
