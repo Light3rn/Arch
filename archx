@@ -18,14 +18,14 @@ cp ./dotfiles/.vimrc /mnt/home/$wantedname/
 cp ./dotfiles/.xmobarrc /mnt/home/$wantedname/
 fi
 if (( $wm == 4)); then
-arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server openbox obconf xterm cairo-dock cairo-dock-plug-ins networkmanager firefox thunar
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server openbox obconf xterm wpa_supplicant dialog cairo-dock cairo-dock-plug-ins firefox thunar
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 mkdir -p /mnt/home/$wantedname/.config/openbox/
 echo $'cairo-dock &' >> /mnt/home/$wantedname/.config/openbox/autostart
 fi
 if (( $wm == 5)); then
-arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server xf86-video-intel lxqt breeze-icons connman chromium git 
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server dialog wpa_supplicant xf86-video-intel lxqt breeze-icons connman chromium git 
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec startlxqt' >> /mnt/home/$wantedname/.xinitrc
 arch-chroot /mnt systemctl enable connman.service
