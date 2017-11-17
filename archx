@@ -16,6 +16,9 @@ mkdir -p /mnt/home/$wantedname/.xmonad
 cp ./dotfiles/xmonad.hs /mnt/home/$wantedname/.xmonad/
 cp ./dotfiles/.vimrc /mnt/home/$wantedname/
 cp ./dotfiles/.xmobarrc /mnt/home/$wantedname/
+cp ./xmonad/.xinitrc /mnt/home/$wantedname/
+cp ./dotfiles/.Xdefaults /mnt/home/$wantedname/
+cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 fi
 if (( $wm == 4)); then
 arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server wpa_supplicant dialog xf86-video-intel openbox obconf xterm chromium thunar xcompmgr cairo-dock cairo-dock-plug-ins
@@ -33,9 +36,6 @@ cp ./lxqt/script /mnt/home/$wantedname/
 fi
 
 #arch-chroot /mnt systemctl enable dhcpcd.service
-#cp ./dotfiles/.Xdefaults /mnt/home/$wantedname/
-#cp ./dotfiles/.xinitrc /mnt/home/$wantedname/
-#cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 
 mkdir -p /mnt/home/$wantedname/Pictures
 cp ./dotfiles/archbackground.jpg /mnt/home/$wantedname/Pictures/
