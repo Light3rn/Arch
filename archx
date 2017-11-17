@@ -36,7 +36,8 @@ fi
 #cp ./dotfiles/.xinitrc /mnt/home/$wantedname/
 #cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 
-cp ./archbackground.jpg /mnt/home/$wantedname/Downloads/
+cp ./dotfiles/archbackground.jpg /mnt/home/$wantedname/Downloads/
+cp ./dotfiles/lxqt/script /mnt/home/$wantedname/
 arch-chroot chown -R $wantedname /home/$wantedname/
 
 set +x
