@@ -21,7 +21,7 @@ arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server openbox obconf xte
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 mkdir -p /mnt/home/$wantedname/.config/openbox/
-echo $'cairo-dock -o &' >> /mnt/home/$wantedname/.config/openbox/autostart
+echo $'cairo-dock &' >> /mnt/home/$wantedname/.config/openbox/autostart
 fi
 
 #arch-chroot /mnt systemctl enable dhcpcd.service
