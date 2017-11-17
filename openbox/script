@@ -1,0 +1,13 @@
+#!/bin/bash
+# For cower:
+gpg --recv-keys hkp://pgp.mit.edu 1EB2638FF56C0C53
+
+mkdir builds
+cd builds
+git clone https://aur.archlinux.org/cower.git
+cd cower
+makepkg -cis
+cd ..
+git clone https://aur.archlinux.org/pacaur.git
+cd pacaur
+makepkg -cis
