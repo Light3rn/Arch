@@ -17,7 +17,7 @@ cp ./dotfiles/xmonad.hs /mnt/home/$wantedname/.xmonad/
 cp ./dotfiles/.vimrc /mnt/home/$wantedname/
 cp ./dotfiles/.xmobarrc /mnt/home/$wantedname/
 else
-arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server openbox
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server openbox xterm
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'exec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 fi
