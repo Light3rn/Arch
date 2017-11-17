@@ -23,7 +23,7 @@ echo $'setxkbmap fi &\nexec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 echo $'cairo-dock -o &' >> /mnt/home/$wantedname/.config/openbox/autostart
 fi
 
-arch-chroot /mnt systemctl enable dhcpcd.service
+#arch-chroot /mnt systemctl enable dhcpcd.service
 cp ./dotfiles/.Xdefaults /mnt/home/$wantedname/
 #cp ./dotfiles/.xinitrc /mnt/home/$wantedname/
 cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
