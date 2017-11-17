@@ -1,6 +1,6 @@
 #!/bin/bash
 # For cower:
-gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
+gpg --recv-keys hkp://pgp.mit.edu 1EB2638FF56C0C53
 
 mkdir builds
 cd builds
@@ -12,3 +12,4 @@ git clone https://aur.archlinux.org/pacaur.git
 cd pacaur
 makepkg -cis
 
+pacaur -S --noconfirm lxqt-connman-applet-git
