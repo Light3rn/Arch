@@ -39,6 +39,17 @@ pacaur -S gnome-shell-extension-dash-to-dock
 /dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
 /dev/sdc1	/mnt/HDD	ext4      defaults,noatime      0      2
 
+ReadyMedia (minidlna)
+systemctl enable minidlna.service
+systemctl start minidlna.service
+killall minidlnad
+
+rebuild:
+minidlnad -R
+
+ei toiminu
+
+
 /etc/pacman.conf 
 [multilib]
 Include = /etc/pacman.d/mirrorlist
