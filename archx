@@ -21,11 +21,12 @@ cp ./dotfiles/.Xdefaults /mnt/home/$wantedname/
 cp ./dotfiles/70-synaptics.conf /mnt/etc/X11/xorg.conf.d/
 fi
 if (( $wm == 4)); then
-arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server wpa_supplicant dialog xf86-video-intel openbox obconf feh xterm chromium thunar xcompmgr cairo-dock cairo-dock-plug-ins
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server wpa_supplicant dialog xf86-video-intel openbox obconf feh xterm chromium thunar xcompmgr cairo-dock cairo-dock-plug-ins menumaker
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then\nstartx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nfeh --bg-scale ~/Pictures/archbackground.jpg &\nxcompmgr &\nexec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 mkdir -p /mnt/home/$wantedname/.config/openbox/
 echo $'cairo-dock -o &' >> /mnt/home/$wantedname/.config/openbox/autostart
+arch-chroot /mnt mmaker -v OpenBox3
 fi
 if (( $wm == 5)); then
 arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server dialog wpa_supplicant xf86-video-intel lxqt breeze-icons connman chromium git 
