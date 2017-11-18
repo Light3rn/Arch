@@ -25,7 +25,7 @@ arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server wpa_supplicant dia
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then\nstartx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nfeh --bg-scale ~/Pictures/archbackground.jpg &\nxcompmgr &\nexec openbox-session' >> /mnt/home/$wantedname/.xinitrc
 mkdir -p /mnt/home/$wantedname/.config/openbox/
-echo $'cairo-dock &' >> /mnt/home/$wantedname/.config/openbox/autostart
+echo $'cairo-dock -o &' >> /mnt/home/$wantedname/.config/openbox/autostart
 fi
 if (( $wm == 5)); then
 arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server dialog wpa_supplicant xf86-video-intel lxqt breeze-icons connman chromium git 
