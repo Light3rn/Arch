@@ -51,6 +51,10 @@ mkdir -p /mnt/boot
 mount $efipart /mnt/boot
 fi
 
+## Copy mirrorlist
+mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+cp ./dotfiles/mirrorlist /etc/pacman.d/mirrorlist
+
 ## Install base
 pacstrap /mnt base base-devel
 
