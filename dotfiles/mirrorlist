@@ -1,0 +1,11 @@
+# Updated 19.11.2017 in Finland
+Server = http://mirrors.evowise.com/archlinux/$repo/os/$arch
+Server = http://archlinux.koyanet.lv/archlinux/$repo/os/$arch
+Server = http://mirror.yandex.ru/archlinux/$repo/os/$arch
+Server = http://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch
+Server = http://mirror.neuf.no/archlinux/$repo/os/$arch
+Server = http://ftp.portlane.com/pub/os/linux/archlinux/$repo/os/$arch
+Server = http://arch.mirror.far.fi/$repo/os/$arch
+Server = http://mirror.one.com/archlinux/$repo/os/$arch
+Server = http://mirror.metalgamer.eu/archlinux/$repo/os/$arch
+Server = http://mirror.vpsfree.cz/archlinux/$repo/os/$arch
