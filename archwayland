@@ -18,7 +18,7 @@ echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TY
 fi
 
 ## Install some favourite tools
-arch-chroot /mnt pacman --noconfirm -S firefox qbittorrent git vlc phonon-qt4-vlc gst-plugins-ugly mpd cantata systemctl minidlna unrar file-roller
+arch-chroot /mnt pacman --noconfirm -S firefox qbittorrent git vlc phonon-qt4-vlc gst-plugins-ugly mpd cantata systemctl minidlna unrar file-roller flashplugin
 arch-chroot /mnt systemctl enable minidlna.service
 
 ## Send the background picture to home folder for using :)
