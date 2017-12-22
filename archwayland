@@ -4,7 +4,7 @@ wantedname = $1
 wm = $2
 
 ## Install wayland, wayland x compability support, wifi compability additions and better ntfs support for external drives and usb sticks
-arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland dialog wpa_supplicant ntfs-3g systemctl
+arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland dialog wpa_supplicant ntfs-3g
 
 ## Install the desktop environment 
 if (( $wm == 1)); then
