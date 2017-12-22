@@ -4,7 +4,7 @@ wantedname = $1
 wm = $2
 
 ## Install wayland, wayland x compability support, wifi compability additions and better ntfs support for external drives and usb sticks
-arch-chroot /mnt pacman --noconfirm -S weston xorg-server-xwayland dialog wpa_supplicant ntfs-3g
+arch-chroot /mnt pacman --noconfirm -S wayland xorg-server-xwayland dialog wpa_supplicant ntfs-3g
 
 ## Install the desktop environment 
 if (( $wm == 1)); then
@@ -18,7 +18,7 @@ echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TY
 fi
 
 ## Install some favourite tools
-arch-chroot /mnt pacman --noconfirm -S firefox qbittorrent git vlc phonon-qt4-vlc gst-plugins-ugly mpd cantata minidlna unrar file-roller flashplugin
+arch-chroot /mnt pacman --noconfirm -S firefox flashplugin unrar file-roller git qbittorrent vlc phonon-qt4-vlc gst-plugins-ugly mpd cantata minidlna
 arch-chroot /mnt systemctl enable minidlna.service
 
 ## Send the background picture to home folder for using :)
