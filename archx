@@ -37,7 +37,7 @@ arch-chroot /mnt systemctl enable connman.service
 cp ./lxqt/script /mnt/home/$wantedname/
 fi
 if (( $wm == 6)); then
-arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server dialog wpa_supplicant xf86-video-intel lxde firefox git unzip
+arch-chroot /mnt pacman --noconfirm -S xorg-xinit xorg-server dialog wpa_supplicant xf86-video-intel lxde firefox git unzip ntfs-3g
 echo $'if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then\n  startx\nfi' >> /mnt/home/$wantedname/.bash_profile
 echo $'setxkbmap fi &\nexec startlxde' >> /mnt/home/$wantedname/.xinitrc
 cp ./lxde/30-touchpad.conf /etc/X11/xorg.conf.d/
