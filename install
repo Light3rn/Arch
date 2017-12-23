@@ -28,7 +28,7 @@ read -p 'Username: ' wantedname
 read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskletter
 diskpart="/dev/sd$diskletter"
 read -p 'Using UEFI? (1, 0): ' uefi
-read -p 'DE? (1 Gnome, 2 Enlightenment, 3 Xmonad, 4 Openbox, 5 LXQt): ' wm
+read -p 'DE? (1 Gnome, 2 Enlightenment, 3 Xmonad, 4 Openbox, 5 LXQt, 6 LXDE): ' wm
 read -p 'Password: ' password
 if (( $uefi == 1)); then
 efipart="${diskpart}1"
