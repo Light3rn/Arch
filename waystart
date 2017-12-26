@@ -33,7 +33,7 @@ pacaur -S gnome-shell-extension-activities-config
 pacaur -S gnome-shell-extension-dash-to-dock
 # Dash to dock on -> Shrink dash, show counter indications, customize opacity 40%
 
-# Mount drives under /mnt and add to fstab 
+# Mount drives under /mnt and add to fstab (/etc/fstab)
 
 # <device>	<dir>		<type>    <options>             <dump> <fsck>
 /dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
