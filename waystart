@@ -62,3 +62,7 @@ sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus primus libvd
 primusrun %command%
 removed primus lib32-primus lib32-nvidia-utils steam
 installed nvidia and removed all nvidia
+
+
+Text color: #1793D1
+Background: #303030
