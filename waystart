@@ -36,6 +36,8 @@ asenna myös plugari
 pacaur -S gnome-shell-extension-dash-to-dock
 # Dash to dock on -> Shrink dash, show counter indications, customize opacity 40%
 
+pacaur -S mellowplayer
+
 # Mount drives under /mnt and add to fstab (/etc/fstab)
 
 # <device>	<dir>		<type>    <options>             <dump> <fsck>
