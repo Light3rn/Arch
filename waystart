@@ -17,6 +17,9 @@ git clone https://aur.archlinux.org/pacaur.git
 cd pacaur
 makepkg -cis
 
+#add rust source code to make Racer autocompletion work
+pacaur -S rust-src
+
 #install, choose 2
 sudo pacman -S virtualbox
 #start manually here or reboot
@@ -25,6 +28,8 @@ sudo modprobe -a vboxdrv
 echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
 #add user to vboxusers -group
 sudo gpasswd -a $USER vboxusers
+#add rust source code
+
 
 sudo mount /dev/sdb1 ~/SSD
 
