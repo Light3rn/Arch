@@ -18,6 +18,7 @@ cd pacaur
 makepkg -cis
 
 #add rust source code to make Racer autocompletion work
+rustup default stable
 rustup component add rust-src
 sudo pacman -S rust-racer
 
