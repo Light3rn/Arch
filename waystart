@@ -18,7 +18,8 @@ cd pacaur
 makepkg -cis
 
 #add rust source code to make Racer autocompletion work
-pacaur -S rust-src
+rustup component add rust-src
+sudo pacman -S rust-racer
 
 #install, choose 2
 sudo pacman -S virtualbox
