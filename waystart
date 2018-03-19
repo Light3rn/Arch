@@ -26,6 +26,10 @@ https://github.com/isamert/gracer
 $ mkdir -p ~/.local/share/gedit/plugins
 $ cd ~/.local/share/gedit/plugins
 $ git clone https://github.com/isamert/gracer.git
+Open gedit, go to Preferences > Plugins > Gracer to activate it.
+From plugins menu, open Gracer's Preferences.
+Set Racer path and Rust source path.
+Restart gedit.
 update:
 $ cd ~/.local/share/gedit/plugins/gracer
 $ git pull
