@@ -21,6 +21,15 @@ makepkg -cis
 rustup default stable
 rustup component add rust-src
 sudo pacman -S rust-racer
+# Sitten
+https://github.com/isamert/gracer
+$ mkdir -p ~/.local/share/gedit/plugins
+$ cd ~/.local/share/gedit/plugins
+$ git clone https://github.com/isamert/gracer.git
+update:
+$ cd ~/.local/share/gedit/plugins/gracer
+$ git pull
+
 
 #install, choose 2
 sudo pacman -S virtualbox
