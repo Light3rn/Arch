@@ -33,7 +33,8 @@ Restart gedit.
 update:
 $ cd ~/.local/share/gedit/plugins/gracer
 $ git pull
-
+#asenna myös visual studio code
+pacaur -S code
 
 #install, choose 2
 sudo pacman -S virtualbox
