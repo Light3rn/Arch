@@ -36,6 +36,14 @@ $ git pull
 #asenna myös visual studio code
 pacaur -S code
 
+
+#Guestissa:
+Spice guest tools:
+https://www.spice-space.org/download.html
+Shared folders:
+https://alexandruvisarion.wordpress.com/2017/06/15/gnome-boxes-introducing-shared-folders/
+http://elmarco.fedorapeople.org/spice-webdavd-x86-0.1.24.msi
+
 #install, choose 2
 sudo pacman -S virtualbox
 #start manually here or reboot
