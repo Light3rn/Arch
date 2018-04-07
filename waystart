@@ -85,9 +85,11 @@ minidlnad -R
 ei toiminu
 
 
-/etc/pacman.conf 
+# enable -> /etc/pacman.conf 
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+pacaur -S crossover
+
 
 sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus primus libvdpau
 #also run this:
