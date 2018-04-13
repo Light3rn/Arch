@@ -36,6 +36,8 @@ $ git pull
 #asenna myös visual studio code
 pacaur -S code
 
+#Monero
+pacaur -S monero
 
 #Guestissa:
 Spice guest tools:
