@@ -54,10 +54,7 @@ Spice guest tools:
 https://www.spice-space.org/download.html
 Shared folders:
 https://www.spice-space.org/download/windows/spice-webdavd/
-
-
-
-#add rust source code
+# Remember to add rust source code if needed rust
 
 
 sudo mount /dev/sdb1 ~/SSD
