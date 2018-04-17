@@ -89,6 +89,7 @@ fi
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
+## Install desktop environment and some programs
 if (( $wm <= 3)); then
 /bin/bash archwayland $wantedname $wm
 else
@@ -99,7 +100,7 @@ fi
 mkdir -p /mnt/etc/systemd/system/getty@tty1.service.d/
 echo $'[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin '${wantedname}$' --noclear %I $TERM' >> /mnt/etc/systemd/system/getty@tty1.service.d/override.conf
 
-# Insert passwords
+## Insert passwords
 echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd
 echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd $wantedname
 
