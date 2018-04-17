@@ -1,23 +1,31 @@
+## Arch colors
 Text color: #1793D1
 Background: #2A2A2A
 
+## Fix hard drives
+sudo mount /dev/sdb1 ~/SSD
+# Mount drives under /mnt and add to fstab (/etc/fstab)
+# <device>	<dir>		<type>    <options>             <dump> <fsck>
+/dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
+/dev/sdc1	/mnt/HDD	ext4      defaults,noatime      0      2
 
-
-
+## Install trizen
 mkdir builds 
 cd builds
 git clone https://aur.archlinux.org/trizen.git
 makepkg -cis
 
-#add rust source code to make Racer autocompletion work
+## Install rust
 sudo pacman -S rustup
 rustup install stable
 rustup default stable-x86_64-unknown-linux-gnu
 
+## Install some rust compability
 # don't remember if needed anymore
 rustup component add rust-src
 # for text editor support
 sudo pacman -S rust-racer
+#add rust source code to make Racer autocompletion work?
 # gedit plugin
 # https://github.com/isamert/gracer
 mkdir -p ~/.local/share/gedit/plugins
@@ -31,12 +39,13 @@ Set Racer path and Rust source path.
 cd ~/.local/share/gedit/plugins/gracer
 git pull
 
-# Visual studio code
+## Install visual studio code
 trizen -S code
 
-# Monero
+## Install Monero
 trizen -S monero
 
+## Install virtual box
 #install, choose 2
 sudo pacman -S virtualbox
 #start manually here or reboot
@@ -45,7 +54,6 @@ sudo modprobe -a vboxdrv
 echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
 #add user to vboxusers -group
 sudo gpasswd -a $USER vboxusers
-
 # Inside guest for shared folders:
 Spice guest tools:
 https://www.spice-space.org/download.html
@@ -53,24 +61,17 @@ Shared folders:
 https://www.spice-space.org/download/windows/spice-webdavd/
 # Remember to add rust source code if needed rust
 
-
-sudo mount /dev/sdb1 ~/SSD
-
+## Install mellowplayer
 pacaur -S mellowplayer
 sudo pacman -S pepper-flash
 
-# Mount drives under /mnt and add to fstab (/etc/fstab)
-
-# <device>	<dir>		<type>    <options>             <dump> <fsck>
-/dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
-/dev/sdc1	/mnt/HDD	ext4      defaults,noatime      0      2
-
+## Install file sharing
 ReadyMedia (minidlna)
 /etc/minidlna.conf
 systemctl enable minidlna.service
 systemctl start minidlna.service
 killall minidlnad
-
+# In case needed
 rebuild:
 minidlnad -R
 
