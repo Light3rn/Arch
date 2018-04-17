@@ -7,15 +7,10 @@
 sudo pacman -S base-devel
 
 mkdir builds 
-gpg --recv-keys hkp://pgp.mit.edu 1EB2638FF56C0C53
 cd builds
-git clone https://aur.archlinux.org/cower.git
-cd cower
+git clone https://aur.archlinux.org/trizen.git
 makepkg -cis
-cd ..
-git clone https://aur.archlinux.org/pacaur.git
-cd pacaur
-makepkg -cis
+
 
 #add rust source code to make Racer autocompletion work
 rustup default stable
