@@ -14,7 +14,7 @@ echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TY
 elif (( $wm == 2)); then
 arch-chroot /mnt pacman --noconfirm -S plasma-desktop
 arch-chroot /mnt systemctl enable connman.service
-echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
+echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nstartplasmacompositor\nfi' >> /mnt/home/$wantedname/.bash_profile
 else
 arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
 arch-chroot /mnt systemctl enable connman.service
