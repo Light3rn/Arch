@@ -13,10 +13,15 @@ makepkg -cis
 
 
 #add rust source code to make Racer autocompletion work
-rustup default stable
+sudo pacman -S rustup
+rustup install stable
+rustup default stable-x86_64-unknown-linux-gnu
+
+# don't remember if needed anymore
 rustup component add rust-src
+# for text editor support
 sudo pacman -S rust-racer
-# Sitten
+# gedit plugin
 # https://github.com/isamert/gracer
 mkdir -p ~/.local/share/gedit/plugins
 cd ~/.local/share/gedit/plugins
@@ -28,13 +33,14 @@ Set Racer path and Rust source path.
 # update:
 cd ~/.local/share/gedit/plugins/gracer
 git pull
-# asenna myös visual studio code
+
+# Visual studio code
 trizen -S code
 
-#Monero
+# Monero
 trizen -S monero
 
-#Guestissa:
+# Guestissa:
 Spice guest tools:
 https://www.spice-space.org/download.html
 Shared folders:
