@@ -28,7 +28,7 @@ read -p 'Username: ' wantedname
 read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskletter
 diskpart="/dev/sd$diskletter"
 read -p 'Using UEFI? (1, 0): ' uefi
-read -p 'DE? (1 Gnome, 2 Enlightenment, 3 Xmonad, 4 Openbox, 5 LXQt, 6 LXDE): ' wm
+read -p 'DE? (1 Gnome, 2 KDE, 3 Enlightenment, 4 Xmonad, 5 Openbox, 6 LXQt, 7 LXDE): ' wm
 read -p 'Password: ' password
 if (( $uefi == 1)); then
 efipart="${diskpart}1"
@@ -89,7 +89,7 @@ fi
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
-if (( $wm <= 2)); then
+if (( $wm <= 3)); then
 /bin/bash archwayland $wantedname $wm
 else
 /bin/bash archx $wantedname $wm
