@@ -17,18 +17,18 @@ rustup default stable
 rustup component add rust-src
 sudo pacman -S rust-racer
 # Sitten
-https://github.com/isamert/gracer
-$ mkdir -p ~/.local/share/gedit/plugins
-$ cd ~/.local/share/gedit/plugins
-$ git clone https://github.com/isamert/gracer.git
+# https://github.com/isamert/gracer
+mkdir -p ~/.local/share/gedit/plugins
+cd ~/.local/share/gedit/plugins
+git clone https://github.com/isamert/gracer.git
 Open gedit, go to Preferences > Plugins > Gracer to activate it.
 From plugins menu, open Gracer's Preferences.
 Set Racer path and Rust source path.
-Restart gedit.
-update:
-$ cd ~/.local/share/gedit/plugins/gracer
-$ git pull
-#asenna myös visual studio code
+# Restart gedit.
+# update:
+cd ~/.local/share/gedit/plugins/gracer
+git pull
+# asenna myös visual studio code
 trizen -S code
 
 #Monero
@@ -85,7 +85,7 @@ ei toiminu
 # enable -> /etc/pacman.conf 
 [multilib]
 Include = /etc/pacman.d/mirrorlist
-pacaur -S crossover
+trizen -S crossover
 
 
 sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus primus libvdpau
