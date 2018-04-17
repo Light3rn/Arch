@@ -12,7 +12,7 @@ arch-chroot /mnt pacman --noconfirm -S gnome gnome-tweak-tool gedit networkmanag
 arch-chroot /mnt systemctl enable NetworkManager.service
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 elif (( $wm == 2)); then
-arch-chroot /mnt pacman --noconfirm -S plasma-desktop plasma-wayland-session plasma-nm kate
+arch-chroot /mnt pacman --noconfirm -S plasma-desktop plasma-wayland-session plasma-nm kate git 
 arch-chroot /mnt systemctl enable NetworkManager.service
 ## Modify language here ~/.config/kxkbrc in future
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nstartplasmacompositor\nfi' >> /mnt/home/$wantedname/.bash_profile
@@ -23,7 +23,7 @@ echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TY
 fi
 
 ## Install some favourite tools
-arch-chroot /mnt pacman --noconfirm -S firefox flashplugin unrar file-roller git qbittorrent vlc phonon-qt4-vlc gst-plugins-ugly mpd cantata minidlna fuseiso perl-image-exiftool libreoffice-still calibre rustup
+arch-chroot /mnt pacman --noconfirm -S firefox flashplugin unrar file-roller qbittorrent vlc phonon-qt4-vlc gst-plugins-ugly mpd cantata minidlna fuseiso perl-image-exiftool libreoffice-still calibre rustup
 arch-chroot /mnt systemctl enable minidlna.service
 
 ## Send the background picture to home folder for using :)
