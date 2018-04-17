@@ -29,10 +29,10 @@ update:
 $ cd ~/.local/share/gedit/plugins/gracer
 $ git pull
 #asenna myös visual studio code
-pacaur -S code
+trizen -S code
 
 #Monero
-pacaur -S monero
+trizen -S monero
 
 #Guestissa:
 Spice guest tools:
