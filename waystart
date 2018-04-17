@@ -1,16 +1,13 @@
-#Change languages and local formats
-#Code example: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
-#Code example: gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
-#Tweak windows: turn on minimize, maximize
-#Tweak extensions user themes on, Launch new instance
-#For aur
-sudo pacman -S base-devel
+Text color: #1793D1
+Background: #2A2A2A
+
+
+
 
 mkdir builds 
 cd builds
 git clone https://aur.archlinux.org/trizen.git
 makepkg -cis
-
 
 #add rust source code to make Racer autocompletion work
 sudo pacman -S rustup
@@ -59,14 +56,6 @@ https://www.spice-space.org/download/windows/spice-webdavd/
 
 sudo mount /dev/sdb1 ~/SSD
 
-pacaur -S chrome-gnome-shell-git
-https://extensions.gnome.org/extension/358/activities-configurator/
-asenna myös plugari
-## vanhentunut: pacaur -S gnome-shell-extension-activities-config
-# Activities configurat on -> Hide text, Disable Hot corner, Panel transparency 70
-pacaur -S gnome-shell-extension-dash-to-dock
-# Dash to dock on -> Shrink dash, show counter indications, customize opacity 40%
-
 pacaur -S mellowplayer
 sudo pacman -S pepper-flash
 
@@ -85,21 +74,32 @@ killall minidlnad
 rebuild:
 minidlnad -R
 
-ei toiminu
-
-
+## To install crossover (wine ++), please check your harddrive
 # enable -> /etc/pacman.conf 
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 trizen -S crossover
 
 
+####### Gnome specific
+#Change languages and local formats
+#Code example: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
+#Code example: gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
+#Tweak windows: turn on minimize, maximize
+#Tweak extensions user themes on, Launch new instance
+
+pacaur -S chrome-gnome-shell-git
+https://extensions.gnome.org/extension/358/activities-configurator/
+asenna myös plugari
+## vanhentunut: pacaur -S gnome-shell-extension-activities-config
+# Activities configurat on -> Hide text, Disable Hot corner, Panel transparency 70
+pacaur -S gnome-shell-extension-dash-to-dock
+# Dash to dock on -> Shrink dash, show counter indications, customize opacity 40%
+
+
+####### Garbage bin
 sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus primus libvdpau
 #also run this:
 primusrun %command%
 removed primus lib32-primus lib32-nvidia-utils steam
 installed nvidia and removed all nvidia
-
-
-Text color: #1793D1
-Background: #2A2A2A
