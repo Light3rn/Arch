@@ -40,12 +40,6 @@ trizen -S code
 # Monero
 trizen -S monero
 
-# Guestissa:
-Spice guest tools:
-https://www.spice-space.org/download.html
-Shared folders:
-https://www.spice-space.org/download/windows/spice-webdavd/
-
 #install, choose 2
 sudo pacman -S virtualbox
 #start manually here or reboot
@@ -54,6 +48,15 @@ sudo modprobe -a vboxdrv
 echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
 #add user to vboxusers -group
 sudo gpasswd -a $USER vboxusers
+
+# Inside guest for shared folders:
+Spice guest tools:
+https://www.spice-space.org/download.html
+Shared folders:
+https://www.spice-space.org/download/windows/spice-webdavd/
+
+
+
 #add rust source code
 
 
