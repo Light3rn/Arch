@@ -15,6 +15,12 @@ cd builds
 git clone https://aur.archlinux.org/trizen.git
 makepkg -cis
 
+## Install corsair drivers:
+pacaur -S ckb-next-git
+sudo systemctl start ckb-next-daemon
+sudo systemctl enable ckb-next-daemon
+
+
 ## Install rust
 sudo pacman -S rustup
 rustup install stable
