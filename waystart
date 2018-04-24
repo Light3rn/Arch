@@ -12,6 +12,11 @@ sudo mount /dev/sdb1 ~/SSD
 ## Install
 sudo npm install -g create-react-app
 
+## Install radeon-gui
+trizen -S radeon-profile-git radeon-profile-daemon-git
+# Add to /etc/sudoers:
+username ALL = NOPASSWD: /usr/bin/radeon-profile
+
 ## Install trizen
 mkdir builds 
 cd builds
