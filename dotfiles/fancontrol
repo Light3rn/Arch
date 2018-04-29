@@ -1,0 +1,11 @@
+# Place this to /etc/fancontrol and also systemctl enable fancontrol.service
+INTERVAL=5
+DEVPATH=hwmon0=devices/platform/coretemp.0 hwmon1=devices/platform/nct6775.656 hwmon2=devices/pci0000:00/0000:00:01.0/0000:01:00.0
+DEVNAME=hwmon0=coretemp hwmon1=nct6791 hwmon2=amdgpu
+FCTEMPS=hwmon2/pwm1=hwmon2/temp1_input hwmon1/pwm1=hwmon0/temp1_input hwmon1/pwm2=hwmon0/temp1_input hwmon1/pwm3=hwmon0/temp1_input hwmon1/pwm4=hwmon0/temp1_input hwmon1/pwm5=hwmon0/temp1_input
+FCFANS=hwmon2/pwm1=hwmon2/fan1_input hwmon1/pwm1=hwmon1/fan1_input hwmon1/pwm2=hwmon1/fan2_input hwmon1/pwm3=hwmon1/fan3_input hwmon1/pwm4=hwmon1/fan4_input hwmon1/pwm5=hwmon1/fan5_input
+MINTEMP=hwmon2/pwm1=55 hwmon1/pwm1=30 hwmon1/pwm2=30 hwmon1/pwm3=30 hwmon1/pwm4=30 hwmon1/pwm5=30
+MAXTEMP=hwmon2/pwm1=80 hwmon1/pwm1=70 hwmon1/pwm2=70 hwmon1/pwm3=70 hwmon1/pwm4=70 hwmon1/pwm5=70
+MINSTART=hwmon2/pwm1=100 hwmon1/pwm1=255 hwmon1/pwm2=255 hwmon1/pwm3=255 hwmon1/pwm4=255 hwmon1/pwm5=255
+MINSTOP=hwmon2/pwm1=0 hwmon1/pwm1=80 hwmon1/pwm2=80 hwmon1/pwm3=80 hwmon1/pwm4=80 hwmon1/pwm5=80
+MAXPWM=hwmon2/pwm1=255 hwmon1/pwm1=255 hwmon1/pwm2=150 hwmon1/pwm3=255 hwmon1/pwm4=255 hwmon1/pwm5=255
