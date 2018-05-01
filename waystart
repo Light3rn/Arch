@@ -9,6 +9,9 @@ sudo mount /dev/sdb1 ~/SSD
 /dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
 /dev/sdc1	/mnt/HDD	ext4      defaults,noatime      0      2
 
+## Install this if pgadmin4 doesn't work:
+https://extensions.gnome.org/extension/1031/topicons/
+
 ## Install
 sudo npm install -g create-react-app
 
