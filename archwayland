@@ -24,7 +24,7 @@ fi
 
 ## Install some favourite tools
 arch-chroot /mnt pacman --noconfirm -S firefox flashplugin unrar file-roller gst-plugins-ugly rustup git npm
-arch-chroot /mnt pacman --noconfirm -S qbittorrent vlc phonon-qt4-vlc mpd cantata minidlna libreoffice-still calibre fuseiso perl-image-exiftool 
+arch-chroot /mnt pacman --noconfirm -S qbittorrent vlc phonon-qt4-vlc mpd cantata minidlna libreoffice-still calibre fuseiso perl-image-exiftool pgadmin4
 arch-chroot /mnt systemctl enable minidlna.service
 
 ## Send the background picture to home folder for using :)
