@@ -24,6 +24,7 @@ username ALL = NOPASSWD: /usr/bin/radeon-profile
 mkdir builds 
 cd builds
 git clone https://aur.archlinux.org/trizen.git
+cd trizen
 makepkg -cis
 
 ## Install corsair drivers:
