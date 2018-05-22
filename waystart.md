@@ -17,9 +17,29 @@ sudo mount /dev/sdb1 ~/SSD
 ```
 
 ### Install Elm:
+https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
+###### 1. Create a directory for global packages
+```sh
+mkdir "${HOME}/.npm-packages"
 ```
-sudo npm install -g yarn
-yarn global add elm
+###### 2. Indicate to `npm` where to store globally installed packages. In your `~/.npmrc` file add:
+```sh
+prefix=${HOME}/.npm-packages
+```
+###### 3. Ensure `npm` will find installed binaries and man pages. Add the following to your `.bashrc`/`.zshrc`:
+
+```sh
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+PATH="$NPM_PACKAGES/bin:$PATH"
+
+# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+```
+Then just
+```
+npm install -g elm
 ```
 
 ### Install this if pgadmin4 doesn't work:
@@ -82,11 +102,13 @@ cd ~/.local/share/gedit/plugins/gracer
 git pull
 
 ## Install visual studio code
+```
 trizen -S code
-
+```
 ## Install Monero
+```
 trizen -S monero
-
+```
 ## Install virtual box
 #install, choose 2
 sudo pacman -S virtualbox
