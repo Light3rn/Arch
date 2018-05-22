@@ -41,6 +41,10 @@ Then just
 ```
 npm install -g elm
 ```
+You may start with (may need a reboot):
+```
+elm-package install
+```
 
 ### Install this if pgadmin4 doesn't work:
 
