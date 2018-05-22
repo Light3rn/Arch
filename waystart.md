@@ -10,12 +10,11 @@ sudo mount /dev/sdb1 ~/SSD
 ```
 
 ## Mount drives under /mnt and add to fstab (/etc/fstab)
+```
  <device>	<dir>		<type>    <options>             <dump> <fsck>
-  
 /dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
-
 /dev/sdc1	/mnt/HDD	ext4      defaults,noatime      0      2
-
+```
 
 ## Install Elm:
 ```
@@ -34,6 +33,7 @@ trizen -S radeon-profile-git radeon-profile-daemon-git
 ```
 ### Add to /etc/sudoers:
 username ALL = NOPASSWD: /usr/bin/radeon-profile
+
 
 ## Install trizen
 mkdir builds 
