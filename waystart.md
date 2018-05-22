@@ -1,61 +1,63 @@
-## Arch colors
+### Arch colors
 
 Text color: #1793D1
 
 Background: #2A2A2A
 
-## Fix hard drives
+### Fix hard drives
 ```
 sudo mount /dev/sdb1 ~/SSD
 ```
 
-## Mount drives under /mnt and add to fstab (/etc/fstab)
+### Mount drives under /mnt and add to fstab (/etc/fstab)
 ```
  <device>	<dir>		<type>    <options>             <dump> <fsck>
 /dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
 /dev/sdc1	/mnt/HDD	ext4      defaults,noatime      0      2
 ```
 
-## Install Elm:
+### Install Elm:
 ```
 gpg --recv-keys C52048C0C0748FEE227D47A2702353E0F7E48EDB
 trizen -S elm-platform
 ```
 
-## Install this if pgadmin4 doesn't work:
+### Install this if pgadmin4 doesn't work:
 
 https://extensions.gnome.org/extension/1031/topicons/
 
 
-## Install radeon-gui
+### Install radeon-gui
 ```
 trizen -S radeon-profile-git radeon-profile-daemon-git
 ```
-### Add to /etc/sudoers:
+#### Add to /etc/sudoers:
 username ALL = NOPASSWD: /usr/bin/radeon-profile
 
 
-## Install trizen
+### Install trizen
 mkdir builds 
 cd builds
 git clone https://aur.archlinux.org/trizen.git
 cd trizen
 makepkg -cis
 
-## Install corsair drivers:
+### Install corsair drivers:
 pacaur -S ckb-next-git
 sudo systemctl start ckb-next-daemon
 sudo systemctl enable ckb-next-daemon
 
 
-## Install rust
+### Install rust
 sudo pacman -S rustup
 rustup install stable
 rustup default stable-x86_64-unknown-linux-gnu
 
-## Install some rust compability
-# don't remember if needed anymore
+### Install some rust compability
+#### don't remember if needed anymore
+```
 rustup component add rust-src
+```
 # for text editor support
 sudo pacman -S rust-racer
 #add rust source code to make Racer autocompletion work?
