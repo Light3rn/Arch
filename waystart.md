@@ -18,9 +18,8 @@ sudo mount /dev/sdb1 ~/SSD
 
 ### Install Elm:
 ```
-gpg --recv-keys C52048C0C0748FEE227D47A2702353E0F7E48EDB
-gpg --recv-keys C5705533DA4F78D8664B5DC0575159689BEFB442
-trizen -S elm-platform
+sudo npm install -g yarn
+yarn global add elm
 ```
 
 ### Install this if pgadmin4 doesn't work:
