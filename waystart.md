@@ -19,6 +19,7 @@ sudo mount /dev/sdb1 ~/SSD
 ### Install Elm:
 ```
 gpg --recv-keys C52048C0C0748FEE227D47A2702353E0F7E48EDB
+gpg --recv-keys C5705533DA4F78D8664B5DC0575159689BEFB442
 trizen -S elm-platform
 ```
 
@@ -32,26 +33,33 @@ https://extensions.gnome.org/extension/1031/topicons/
 trizen -S radeon-profile-git radeon-profile-daemon-git
 ```
 #### Add to /etc/sudoers:
+```
 username ALL = NOPASSWD: /usr/bin/radeon-profile
-
+```
 
 ### Install trizen
+```
 mkdir builds 
 cd builds
 git clone https://aur.archlinux.org/trizen.git
 cd trizen
 makepkg -cis
+```
 
 ### Install corsair drivers:
+```
 pacaur -S ckb-next-git
 sudo systemctl start ckb-next-daemon
 sudo systemctl enable ckb-next-daemon
+```
 
 
 ### Install rust
+```
 sudo pacman -S rustup
 rustup install stable
 rustup default stable-x86_64-unknown-linux-gnu
+```
 
 ### Install some rust compability
 #### don't remember if needed anymore
