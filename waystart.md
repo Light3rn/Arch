@@ -1,13 +1,21 @@
 ## Arch colors
+
 Text color: #1793D1
+
 Background: #2A2A2A
 
 ## Fix hard drives
+```
 sudo mount /dev/sdb1 ~/SSD
-# Mount drives under /mnt and add to fstab (/etc/fstab)
-# <device>	<dir>		<type>    <options>             <dump> <fsck>
+```
+
+## Mount drives under /mnt and add to fstab (/etc/fstab)
+ <device>	<dir>		<type>    <options>             <dump> <fsck>
+  
 /dev/sdb1	/mnt/SSD	ext4      defaults,noatime      0      2
+
 /dev/sdc1	/mnt/HDD	ext4      defaults,noatime      0      2
+
 
 ## Install Elm:
 ```
@@ -16,14 +24,15 @@ trizen -S elm-platform
 ```
 
 ## Install this if pgadmin4 doesn't work:
+
 https://extensions.gnome.org/extension/1031/topicons/
 
-## Install
-sudo npm install -g create-react-app
 
 ## Install radeon-gui
+```
 trizen -S radeon-profile-git radeon-profile-daemon-git
-# Add to /etc/sudoers:
+```
+### Add to /etc/sudoers:
 username ALL = NOPASSWD: /usr/bin/radeon-profile
 
 ## Install trizen
