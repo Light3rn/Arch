@@ -41,7 +41,7 @@ Then just
 ```
 npm install -g elm
 ```
-You may start with (may need a reboot):
+You may start with (needs relogin):
 ```
 elm-package install
 ```
