@@ -90,17 +90,12 @@ fi
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
-## Install desktop environment and some programs
+## Enable multilib and install desktop environment
+arch-chroot /mnt sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 if (( $wm <= 3)); then
 /bin/bash archwayland $wantedname $wm
 else
 /bin/bash archx $wantedname $wm
-fi
-
-## Install desktop environment and some programs
-if (( $radeon == 1)); then
-arch-chroot /mnt sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-arch-chroot /mnt pacman --noconfirm -S mesa
 fi
 
 ## Make autoboot
