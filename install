@@ -100,7 +100,7 @@ fi
 ## Install desktop environment and some programs
 if (( $radeon == 1)); then
 arch-chroot /mnt sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-arch-chroot /mnt pacman --noconfirm -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon
+arch-chroot /mnt pacman --noconfirm -S mesa
 fi
 
 ## Make autoboot
