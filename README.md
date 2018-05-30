@@ -4,9 +4,11 @@ Arch install script
 1) Boot Installation
 2) ```loadkeys xx```
 3) ```fdisk -l```
-4) If UEFI, partition with ```fdisk /dev/sdX1``` EFI and ```fdisk /dev/sdX2``` Linux (using GPT)
+4) If UEFI, partition with ```fdisk /dev/sdX``` and then first let's create new GPT partition table and EFI partition:
+ ```g``` -> ```n ``` -> ```(default)``` -> ```(default)``` -> ```+512M ``` -> ```yes ``` -> ```t ``` -> ```n ```
+ Then let's use what's left for main partition (you may do what you like):
+ ```n ``` -> ```default ``` -> ```default ``` -> ```default ```
 5) If Non-UEFI, partition with ```fdisk: /dev/sdX``` and ```o``` -> ```n ``` -> ```a``` -> ```w```
-6) ```dir```
 7) ```wget https://github.com/lightern/arch/tarball/master -O - | tar xz```
 8) ```dir (to check folder)```
 9) ```cd lightern-arch-XXXXXXX```
