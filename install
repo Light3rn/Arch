@@ -29,7 +29,6 @@ read -p 'Give me installation device letter (ex. just a from /dev/sda): ' diskle
 diskpart="/dev/sd$diskletter"
 read -p 'Using UEFI? (1, 0): ' uefi
 read -p 'DE? (1 Gnome, 2 KDE, 3 Enlightenment, 4 Xmonad, 5 Openbox, 6 LXQt, 7 LXDE): ' wm
-read -p 'Radeon? (1, 0): ' radeon
 read -p 'Password: ' password
 if (( $uefi == 1)); then
 efipart="${diskpart}1"
@@ -80,13 +79,14 @@ rm /mnt/boot/loader/loader.conf
 echo $'default  arch\ntimeout  0' >> /mnt/boot/loader/loader.conf
 partuuid=$(blkid | grep $linuxpart | sed 's/.*PARTUUID="//g' | sed 's/\"//g')
 echo $'title    Arch Linux\nlinux    /vmlinuz-linux\ninitrd   /initramfs-linux.img\noptions  root=PARTUUID='${partuuid}' rw' >> /mnt/boot/loader/entries/arch.conf
+arch-chroot /mnt pacman --noconfirm -S sudo
 else
 arch-chroot /mnt pacman --noconfirm -S grub sudo
 arch-chroot /mnt grub-install $diskpart
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
 fi
 
-## Add user to wheel group and sudoers (also install sudo)
+## Add user to wheel group and sudoers
 arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
@@ -100,7 +100,7 @@ fi
 
 ## Make autoboot
 mkdir -p /mnt/etc/systemd/system/getty@tty1.service.d/
-echo $'[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin '${wantedname}$' --noclear %I $TERM' >> /mnt/etc/systemd/system/getty@tty1.service.d/override.conf
+echo $'[Service]\nExecStart=-/usr/bin/agetty --autologin '${wantedname}$' --noclear %I $TERM' >> /mnt/etc/systemd/system/getty@tty1.service.d/override.conf
 
 ## Insert passwords
 echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd
