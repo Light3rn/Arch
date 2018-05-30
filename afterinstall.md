@@ -56,15 +56,6 @@ elm-package install
 https://extensions.gnome.org/extension/1031/topicons/
 
 
-### Install radeon-gui
-```
-trizen -S radeon-profile-git radeon-profile-daemon-git
-```
-#### Add to /etc/sudoers:
-```
-username ALL = NOPASSWD: /usr/bin/radeon-profile
-```
-
 ### Install trizen
 ```
 mkdir builds 
@@ -76,7 +67,7 @@ makepkg -cis
 
 ### Install corsair drivers:
 ```
-pacaur -S ckb-next-git
+trizen -S ckb-next
 sudo systemctl start ckb-next-daemon
 sudo systemctl enable ckb-next-daemon
 ```
