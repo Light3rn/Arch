@@ -112,45 +112,66 @@ git pull
 ```
 trizen -S code
 ```
-## Install Monero
+### Install Monero
 ```
 trizen -S monero
 ```
-## Install virtual box
-#install, choose 2
+### Install virtual box
+Install, **choose 2**
+```
 sudo pacman -S virtualbox
-#start manually here or reboot
+```
+Start manually here or reboot
+```
 sudo modprobe -a vboxdrv
-#add modules for loading on startup
+```
+add modules for loading on startup
+```
 echo 'vboxdrv' | sudo tee --append /etc/modules-load.d/virtualbox.conf
-#add user to vboxusers -group
+```
+add user to vboxusers -group
+```
 sudo gpasswd -a $USER vboxusers
-# Inside guest for shared folders:
+```
+#### Inside guest for shared folders:
 Spice guest tools:
 https://www.spice-space.org/download.html
 Shared folders:
 https://www.spice-space.org/download/windows/spice-webdavd/
-# Remember to add rust source code if needed rust
+##### Remember to add rust source code if needed rust
 
-## Install mellowplayer
+### Install mellowplayer
+```
 pacaur -S mellowplayer
 sudo pacman -S pepper-flash
+```
 
-## Install file sharing
+### Install file sharing
 ReadyMedia (minidlna)
 /etc/minidlna.conf
+```
 systemctl enable minidlna.service
 systemctl start minidlna.service
 killall minidlnad
-# In case needed
+```
+
+#### In case needed:
+```
 rebuild:
 minidlnad -R
+```
 
-## To install crossover (wine ++), please check your harddrive
-# enable -> /etc/pacman.conf 
+
+### To install crossover (wine ++), please check your harddrive
+##### enable -> /etc/pacman.conf 
+```
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+```
+And:
+```
 trizen -S crossover
+```
 
 
 ####### Gnome specific
@@ -169,9 +190,12 @@ pacaur -S gnome-shell-extension-dash-to-dock
 # Dash to dock on -> Shrink dash, show counter indications, customize opacity 40%
 
 
-####### Garbage bin
+## Garbage bin
+### Nvidia:
+```
 sudo pacman -S lib32-nvidia-utils ttf-liberation steam lib32-primus primus libvdpau
-#also run this:
+```
+#### Also to remember:
 primusrun %command%
 removed primus lib32-primus lib32-nvidia-utils steam
 installed nvidia and removed all nvidia
