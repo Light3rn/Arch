@@ -85,23 +85,28 @@ rustup default stable-x86_64-unknown-linux-gnu
 ```
 rustup component add rust-src
 ```
-# for text editor support
+### for text editor support
+```
 sudo pacman -S rust-racer
+```
 #add rust source code to make Racer autocompletion work?
-# gedit plugin
-# https://github.com/isamert/gracer
+#### gedit plugin
+#### https://github.com/isamert/gracer
+```
 mkdir -p ~/.local/share/gedit/plugins
 cd ~/.local/share/gedit/plugins
 git clone https://github.com/isamert/gracer.git
+```
 Open gedit, go to Preferences > Plugins > Gracer to activate it.
 From plugins menu, open Gracer's Preferences.
 Set Racer path and Rust source path.
-# Restart gedit.
-# update:
+Restart gedit.
+update:
+```
 cd ~/.local/share/gedit/plugins/gracer
 git pull
-
-## Install visual studio code
+```
+### Install visual studio code
 ```
 trizen -S code
 ```
