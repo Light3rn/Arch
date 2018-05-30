@@ -101,7 +101,7 @@ fi
 
 ## Make autoboot
 mkdir -p /mnt/etc/systemd/system/getty@tty1.service.d/
-echo $'[Service]\nExecStart=-/usr/bin/agetty --autologin '${wantedname}$' --noclear %I $TERM' >> /mnt/etc/systemd/system/getty@tty1.service.d/override.conf
+echo $'[Service]\nExecStart=\nExecStart=-/usr/bin/agetty --autologin '${wantedname}$' --noclear %I $TERM' >> /mnt/etc/systemd/system/getty@tty1.service.d/override.conf
 
 ## Insert passwords
 echo -e "${password}\n${password}\n" | arch-chroot /mnt passwd
