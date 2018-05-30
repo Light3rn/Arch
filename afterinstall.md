@@ -81,17 +81,19 @@ rustup default stable-x86_64-unknown-linux-gnu
 ```
 
 ### Install some rust compability
-#### don't remember if needed anymore
+#### Don't remember if needed anymore
 ```
 rustup component add rust-src
 ```
-### for text editor support
+#### For text editor support
 ```
 sudo pacman -S rust-racer
 ```
-#add rust source code to make Racer autocompletion work?
-#### gedit plugin
-#### https://github.com/isamert/gracer
+add rust source code to make Racer autocompletion work?
+```
+gedit plugin
+```
+https://github.com/isamert/gracer
 ```
 mkdir -p ~/.local/share/gedit/plugins
 cd ~/.local/share/gedit/plugins
