@@ -91,8 +91,8 @@ arch-chroot /mnt useradd -m -G wheel -s /bin/bash $wantedname
 echo $wantedname" ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
 ## Enable multilib (and update libs) and install desktop environment
-arch-chroot /mnt sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-arch-chroot /mnt pacman --noconfirm -Sy
+#arch-chroot /mnt sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+#arch-chroot /mnt pacman --noconfirm -Sy
 if (( $wm <= 3)); then
 /bin/bash archwayland $wantedname $wm
 else
