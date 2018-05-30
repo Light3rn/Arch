@@ -4,7 +4,7 @@ Arch install script
 1) Boot Installation
 2) ```loadkeys xx```
 3) ```fdisk -l```
-4) a) If UEFI:
+4) If UEFI:
 * First open  with ```fdisk /dev/sdX```
 * Then first let's create new GPT partition table and EFI partition:
 * ```g``` -> ```n ``` -> ```(default)``` -> ```(default)``` -> ```+512M ``` -> ```yes ``` -> ```t ``` -> ```n ```
