@@ -11,7 +11,7 @@ sudo mount /dev/sdb1 ~/SSD
 
 ### Install keyboard support for Corsair:
 ```
-trizen -S cbk-next
+trizen -S ckb-next
 ```
 
 ### Mount drives under /mnt and add to fstab (/etc/fstab)
