@@ -9,11 +9,6 @@ Background: #2A2A2A
 sudo mount /dev/sdb1 ~/SSD
 ```
 
-### Install keyboard support for Corsair:
-```
-trizen -S ckb-next
-```
-
 ### Mount drives under /mnt and add to fstab (/etc/fstab)
 ```
  <device>	<dir>		<type>    <options>             <dump> <fsck>
