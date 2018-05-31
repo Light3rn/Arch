@@ -6,16 +6,17 @@ Background: #2A2A2A
 
 ### Wallpapers:
 http://oswallpapers.com/
-### Install bauerbill
+### Install aurman
 ```
 mkdir builds 
 cd builds
 git clone https://aur.archlinux.org/aurman.git
 cd aurman
 makepkg -cis
-aurman -S bauerbill
-# if aurman fails without signature: gpg --recv-keys hkp://pgp.mit.edu 1D1F0DC78F173680
-sudo pacman -Rs aurman
+```
+### Install powerpill
+```
+aurman -S powerpill
 ```
 Also edit /etc/pacman.conf libs look like this or you'll get errors with powerpill:
 ```
