@@ -4,17 +4,6 @@ Text color: #1793D1
 
 Background: #2A2A2A
 
-### Create update script and automate it
-Generate "update" -file to your homefolder
-```
-#!/bin/bash
-reflector --verbose --country Austria --country Belarus --country Belgium --country "Bosnia and Herzegovina" --country Bulgaria --country Croatia --country Czechia --country Denmark --country Finland --country France --country Germany --country Greece --country Hungary --country Iceland --country Ireland --country Israel --country Italy --country Latvia --country Lithuania --country Luxembourg --country Netherlands --country Norway --country Poland --country Portugal --country Romania --country Serbia --country Slovakia --country Slovenia --country Spain --country Sweden --country Switzerland --country Ukraine --country "United Kingdom" --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
-pacman -Syu
-```
-Then just run this command from your update button
-```
-gnome-terminal -- sudo ~/update
-```
 ### Install bauerbill
 ```
 mkdir builds 
@@ -32,7 +21,17 @@ Also edit /etc/pacman.conf libs look like this or you'll get errors with powerpi
 SigLevel = PackageRequired
 Include = /etc/pacman.d/mirrorlis
 ```
-
+### Create update script and automate it
+Generate "update" -file to your homefolder
+```
+#!/bin/bash
+reflector --verbose --country Austria --country Belarus --country Belgium --country "Bosnia and Herzegovina" --country Bulgaria --country Croatia --country Czechia --country Denmark --country Finland --country France --country Germany --country Greece --country Hungary --country Iceland --country Ireland --country Israel --country Italy --country Latvia --country Lithuania --country Luxembourg --country Netherlands --country Norway --country Poland --country Portugal --country Romania --country Serbia --country Slovakia --country Slovenia --country Spain --country Sweden --country Switzerland --country Ukraine --country "United Kingdom" --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
+powerpill -Syu
+```
+Then just run this command from your update button
+```
+gnome-terminal -- sudo ~/update
+```
 ### Fix hard drives
 ```
 sudo mount /dev/sdb1 ~/SSD
