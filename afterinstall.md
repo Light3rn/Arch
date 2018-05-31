@@ -5,13 +5,15 @@ Text color: #1793D1
 Background: #2A2A2A
 
 
-### Install trizen
+### Install bauerbill
 ```
 mkdir builds 
 cd builds
-git clone https://aur.archlinux.org/bauerbill.git
-cd bauerbill
+git clone https://aur.archlinux.org/aurman.git
+cd aurman
 makepkg -cis
+aurman -S bauerbill
+sudo pacman -Rs aurman
 ```
 
 ### Fix hard drives
