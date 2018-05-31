@@ -65,7 +65,7 @@ https://extensions.gnome.org/extension/1031/topicons/
 
 ### Install corsair drivers:
 ```
-trizen -S ckb-next
+aurman -S ckb-next
 sudo systemctl start ckb-next-daemon
 sudo systemctl enable ckb-next-daemon
 ```
@@ -108,11 +108,11 @@ git pull
 ```
 ### Install visual studio code
 ```
-trizen -S code
+aurman -S code
 ```
 ### Install Monero
 ```
-trizen -S monero
+aurman -S monero
 ```
 ### Install virtual box
 Install, **choose 2**
@@ -168,7 +168,7 @@ Include = /etc/pacman.d/mirrorlist
 ```
 And:
 ```
-trizen -S crossover
+aurman -S crossover
 ```
 
 
