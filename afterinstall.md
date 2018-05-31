@@ -4,6 +4,16 @@ Text color: #1793D1
 
 Background: #2A2A2A
 
+
+### Install trizen
+```
+mkdir builds 
+cd builds
+git clone https://aur.archlinux.org/trizen.git
+cd trizen
+makepkg -cis
+```
+
 ### Fix hard drives
 ```
 sudo mount /dev/sdb1 ~/SSD
@@ -50,15 +60,6 @@ elm-package install
 
 https://extensions.gnome.org/extension/1031/topicons/
 
-
-### Install trizen
-```
-mkdir builds 
-cd builds
-git clone https://aur.archlinux.org/trizen.git
-cd trizen
-makepkg -cis
-```
 
 ### Install corsair drivers:
 ```
