@@ -22,7 +22,7 @@ Also edit /etc/pacman.conf libs look like this or you'll get errors with powerpi
 ```
 [core]
 SigLevel = PackageRequired
-Include = /etc/pacman.d/mirrorlis
+Include = /etc/pacman.d/mirrorlist
 ```
 ### Create update script and automate it
 Generate "update" -file to your homefolder
