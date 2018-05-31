@@ -8,8 +8,7 @@ Background: #2A2A2A
 Generate "update" -file to your homefolder
 ```
 #!/bin/bash
-curl -o /etc/pacman.d/mirrorlist 'https://www.archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6&use_mirror_status=on'
-sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist
+reflector --verbose --country Austria --country Belarus --country Belgium --country "Bosnia and Herzegovina" --country Bulgaria --country Croatia --country Czechia --country Denmark --country Finland --country France --country Germany --country Greece --country Hungary --country Iceland --country Ireland --country Israel --country Italy --country Latvia --country Lithuania --country Luxembourg --country Netherlands --country Norway --country Poland --country Portugal --country Romania --country Serbia --country Slovakia --country Slovenia --country Spain --country Sweden --country Switzerland --country Ukraine --country "United Kingdom" --latest 25 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syu
 ```
 Then just run this command from your update button
