@@ -4,7 +4,18 @@ Text color: #1793D1
 
 Background: #2A2A2A
 
-
+### Create update script and automate it
+Generate "update" -file to your homefolder
+```
+#!/bin/bash
+curl -o /etc/pacman.d/mirrorlist 'https://www.archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6&use_mirror_status=on'
+sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist
+pacman -Syu
+```
+Then just run this command from your update button
+```
+gnome-terminal -- sudo ~/update
+```
 ### Install bauerbill
 ```
 mkdir builds 
