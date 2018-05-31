@@ -26,6 +26,12 @@ aurman -S bauerbill
 # if aurman fails without signature: gpg --recv-keys hkp://pgp.mit.edu 1D1F0DC78F173680
 sudo pacman -Rs aurman
 ```
+Also edit /etc/pacman.conf libs look like this or you'll get errors with powerpill:
+```
+[core]
+SigLevel = PackageRequired
+Include = /etc/pacman.d/mirrorlis
+```
 
 ### Fix hard drives
 ```
