@@ -5,8 +5,7 @@ Text color: #1793D1
 Background: #2A2A2A
 
 ### Wallpapers:
-http://oswallpapers.com/apricity-os-gnome-07-2016-default-desktop-wallpapers/
-
+http://oswallpapers.com/
 ### Install bauerbill
 ```
 mkdir builds 
