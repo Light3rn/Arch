@@ -198,7 +198,7 @@ aurman -S crossover
 #Tweak windows: turn on minimize, maximize
 #Tweak extensions user themes on, Launch new instance
 
-pacaur -S chrome-gnome-shell-git
+aurman -S chrome-gnome-shell-git gnome-shell-extension-no-topleft-hot-corner
 https://extensions.gnome.org/extension/358/activities-configurator/
 asenna myös plugari
 ## vanhentunut: pacaur -S gnome-shell-extension-activities-config
