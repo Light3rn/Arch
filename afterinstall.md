@@ -24,6 +24,7 @@ git clone https://aur.archlinux.org/aurman.git
 cd aurman
 makepkg -cis
 aurman -S bauerbill
+# if aurman fails without signature: ```gpg --recv-keys hkp://pgp.mit.edu 1D1F0DC78F173680```
 sudo pacman -Rs aurman
 ```
 
