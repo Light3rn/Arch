@@ -9,8 +9,8 @@ Background: #2A2A2A
 ```
 mkdir builds 
 cd builds
-git clone https://aur.archlinux.org/trizen.git
-cd trizen
+git clone https://aur.archlinux.org/bauerbill.git
+cd bauerbill
 makepkg -cis
 ```
 
