@@ -202,11 +202,15 @@ Tweak extensions user themes on, Launch new instance
 aurman -S chrome-gnome-shell-git gnome-shell-extension-no-topleft-hot-corner
 ```
 https://extensions.gnome.org/extension/358/activities-configurator/
-asenna myös plugari
-## vanhentunut: pacaur -S gnome-shell-extension-activities-config
-# Activities configurat on -> Hide text, Disable Hot corner, Panel transparency 70
-pacaur -S gnome-shell-extension-dash-to-dock
-# Dash to dock on -> Shrink dash, show counter indications, customize opacity 40%
+Install plugin
+```
+## Deprecated: pacaur -S gnome-shell-extension-activities-config
+```
+Activities configurat on -> Hide text, Disable Hot corner, Panel transparency 70
+```
+aurman -S gnome-shell-extension-dash-to-dock
+```
+Dash to dock on -> Shrink dash, show counter indications, customize opacity 40%
 
 
 ## Garbage bin
