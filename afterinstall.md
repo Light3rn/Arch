@@ -202,6 +202,7 @@ Tweak extensions user themes on, Launch new instance
 aurman -S chrome-gnome-shell-git gnome-shell-extension-no-topleft-hot-corner
 ```
 https://extensions.gnome.org/extension/358/activities-configurator/
+
 Install plugin
 ```
 ## Deprecated: pacaur -S gnome-shell-extension-activities-config
