@@ -37,6 +37,12 @@ Then just run this command from your update button
 ```
 gnome-terminal -- sudo ~/update
 ```
+### Install corsair drivers:
+```
+aurman -S ckb-next
+sudo systemctl start ckb-next-daemon
+sudo systemctl enable ckb-next-daemon
+```
 ### Fix hard drives
 ```
 sudo mount /dev/sdb1 ~/SSD
@@ -82,14 +88,6 @@ elm-package install
 ### Install this if pgadmin4 doesn't work:
 
 https://extensions.gnome.org/extension/1031/topicons/
-
-
-### Install corsair drivers:
-```
-aurman -S ckb-next
-sudo systemctl start ckb-next-daemon
-sudo systemctl enable ckb-next-daemon
-```
 
 
 ### Install rust
