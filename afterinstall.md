@@ -192,14 +192,15 @@ aurman -S crossover
 ```
 
 
-####### Gnome specific
-#Change languages and local formats
-#Code example: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
-#Code example: gsettings set org.gnome.desktop.background picture-uri "'file:///home/antti/Pictures/archbackground.jpg'"
-#Tweak windows: turn on minimize, maximize
-#Tweak extensions user themes on, Launch new instance
-
+## Gnome specific
+Change languages and local formats
+Code example: gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'fi')]"
+Code example: gsettings set org.gnome.desktop.background picture-uri "'file:///home/users/Pictures/background.jpg'"
+Tweak windows: turn on minimize, maximize
+Tweak extensions user themes on, Launch new instance
+```
 aurman -S chrome-gnome-shell-git gnome-shell-extension-no-topleft-hot-corner
+```
 https://extensions.gnome.org/extension/358/activities-configurator/
 asenna myös plugari
 ## vanhentunut: pacaur -S gnome-shell-extension-activities-config
