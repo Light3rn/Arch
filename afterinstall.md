@@ -151,13 +151,12 @@ update:
 cd ~/.local/share/gedit/plugins/gracer
 git pull
 ```
+##### Remember to add rust source code if needed rust
 
 ### Install Monero
 ```
 aurman -S monero
 ```
-
-##### Remember to add rust source code if needed rust
 
 ### Install mellowplayer
 ```
