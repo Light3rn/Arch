@@ -64,6 +64,10 @@ add user to vboxusers -group
 ```
 sudo gpasswd -a $USER vboxusers
 ```
+Install extension pack for usb2 support:
+```
+aurman -S virtualbox-ext-oracle
+```
 #### Inside guest for shared folders:
 Spice guest tools:
 https://www.spice-space.org/download.html
