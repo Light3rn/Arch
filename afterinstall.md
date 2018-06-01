@@ -1,8 +1,19 @@
-### Arch colors
+### Customizations
 
 Text color: #1793D1
 
 Background: #2A2A2A
+
+#### Terminal font
+```
+nano /usr/share/gnome-shell/theme/gnome-shell.css
+```
+Paste:
+```
+stage {
+    font-family: 'Source Code Pro', monospace;
+}
+```
 
 ### Wallpapers:
 http://oswallpapers.com/
