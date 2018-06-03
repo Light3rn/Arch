@@ -25,7 +25,7 @@ fi
 ## Install some favourite tools
 #arch-chroot /mnt pacman --noconfirm -S virtualbox-guest-utils
 arch-chroot /mnt pacman --noconfirm -S firefox git
-arch-chroot /mnt pacman --noconfirm -S flashplugin file-roller npm qbittorrent minidlna libreoffice-still calibre adobe-source-code-pro-fonts vulkan-intel
+arch-chroot /mnt pacman --noconfirm -S flashplugin file-roller npm qbittorrent minidlna libreoffice-still calibre adobe-source-code-pro-fonts vulkan-intel xf86-video-intel
 arch-chroot /mnt systemctl enable minidlna.service
 ##arch-chroot /mnt pacman --noconfirm -S unrar gst-plugins-good vlc phonon-qt4-vlc mpd cantata fuseiso perl-image-exiftool pgadmin4
 
