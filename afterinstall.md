@@ -19,10 +19,10 @@ Tweaks->Appearance->Themes->Applications+Cursor+Icons
 aurman -S otf-san-francisco
 ```
 Tweaks-Fonts
-Window title originally Cantarelli Bold 11
-Interface originally Cantarell Regular 11
-Document originally Sans Regular 11
-Monospace originally Monospace Regular
+Window title Cantarelli Bold 11 -> SF Pro Display Bold
+Interface Cantarell Regular 11 -> SF Pro Display Regular
+Document Sans Regular 11 -> SF Pro Text Regular
+Monospace Monospace Regular -> Source COde Pro Regular
 ### Install aurman
 ```
 mkdir builds 
