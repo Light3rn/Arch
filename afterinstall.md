@@ -11,7 +11,6 @@ http://oswallpapers.com/
 aurman -S gnome-osc-hs-gtk-theme
 aurman -S macos-icon-theme
 aurman -S capitaine-cursors
-
 ```
 Tweaks->Appearance->Themes->Applications+Cursor+Icons
 
