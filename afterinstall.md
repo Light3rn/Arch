@@ -6,17 +6,14 @@ Background: #2A2A2A
 
 ### Wallpapers:
 http://oswallpapers.com/
-### New theme:
+### Theming:
 ```
 aurman -S gnome-osc-hs-gtk-theme
-```
-Change: Tweaks->Appearance->Themes->Applications
-Also: Tweaks->Windows->Placement:Left
-### New icons:
-```
 aurman -S macos-icon-theme
+aurman -S capitaine-cursors
+
 ```
-Change: Tweaks->Appearance->Themes->Icons
+Tweaks->Appearance->Themes->Applications+Cursor+Icons
 
 ### Install aurman
 ```
