@@ -10,6 +10,7 @@ http://oswallpapers.com/
 ```
 aurman -S gnome-osc-hs-gtk-theme
 ```
+Change: Tweaks->Appearance->Themes->Applications
 ### Install aurman
 ```
 mkdir builds 
