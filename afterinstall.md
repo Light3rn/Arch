@@ -14,6 +14,16 @@ aurman -S capitaine-cursors
 ```
 Tweaks->Appearance->Themes->Applications+Cursor+Icons
 
+### Firefox theme
+https://github.com/ronilaukkarinen/minimalistic-firefox-theme
+First create a new profile:
+```
+firefox -profilemanager
+```
+1) Create userChrome.css file to that folder and paste contents of userChrome.css or userChrome-safaristyle.css
+2) Go to ./mozilla/firefox/, find your profile folder and create folder "chrome" (lowercase) under it
+3) ```touch userChrome.css```
+4) Paste contents of dotfiles/userChrome.css
 ### Install aurman
 ```
 mkdir builds 
