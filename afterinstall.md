@@ -14,16 +14,15 @@ aurman -S capitaine-cursors
 ```
 Tweaks->Appearance->Themes->Applications+Cursor+Icons
 
-### Firefox theme
-https://github.com/ronilaukkarinen/minimalistic-firefox-theme
-First create a new profile:
+### Fonts
 ```
-firefox -profilemanager
+aurman -S otf-san-francisco
 ```
-1) Create userChrome.css file to that folder and paste contents of userChrome.css or userChrome-safaristyle.css
-2) Go to ./mozilla/firefox/, find your profile folder and create folder "chrome" (lowercase) under it
-3) ```touch userChrome.css```
-4) Paste contents of dotfiles/userChrome.css
+Tweaks-Fonts
+Window title originally Cantarelli Bold 11
+Interface originally Cantarell Regular 11
+Document originally Sans Regular 11
+Monospace originally Monospace Regular
 ### Install aurman
 ```
 mkdir builds 
