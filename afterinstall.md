@@ -12,6 +12,12 @@ aurman -S gnome-osc-hs-gtk-theme
 ```
 Change: Tweaks->Appearance->Themes->Applications
 Also: Tweaks->Windows->Placement:Left
+### New icons:
+```
+aurman -S macos-icon-theme
+```
+Change: Tweaks->Appearance->Themes->Icons
+
 ### Install aurman
 ```
 mkdir builds 
