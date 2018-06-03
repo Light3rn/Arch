@@ -1,8 +1,12 @@
 ### Customizations
 
 Text color: #1793D1
-
 Background: #2A2A2A
+
+### Dash to dock:
+```
+aurman -S gnome-shell-extension-dash-to-dock
+```
 
 ### Wallpapers:
 http://oswallpapers.com/
