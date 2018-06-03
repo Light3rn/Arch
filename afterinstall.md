@@ -6,6 +6,10 @@ Background: #2A2A2A
 
 ### Wallpapers:
 http://oswallpapers.com/
+### New theme:
+```
+aurman -S gnome-osc-hs-gtk-theme
+```
 ### Install aurman
 ```
 mkdir builds 
