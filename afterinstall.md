@@ -18,6 +18,14 @@ aurman -S capitaine-cursors
 ```
 Tweaks->Appearance->Themes->Applications+Cursor+Icons
 
+### Western digital green:
+Please notice that time is x5s (12=60s):
+```
+sudo pacman -S idle3-tools
+sudo idle3ctl -s 12 /dev/sdX
+```
+
+
 ### Fonts
 ```
 aurman -S otf-san-francisco
