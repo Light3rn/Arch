@@ -203,8 +203,9 @@ sudo pacman -S pepper-flash
 ```
 
 ### Install file sharing
-ReadyMedia (minidlna)
-/etc/minidlna.conf
+ReadyMedia (minidlna) 
+* Remember that the hard disc needs to be mounted with fstab for permission
+* Edit /etc/minidlna.conf
 ```
 systemctl enable minidlna.service
 systemctl start minidlna.service
