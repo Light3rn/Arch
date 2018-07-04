@@ -7,7 +7,14 @@ Background: #2A2A2A
 ```
 aurman -S gnome-shell-extension-dash-to-dock
 ```
-
+### Install aurman
+```
+mkdir builds 
+cd builds
+git clone https://aur.archlinux.org/aurman.git
+cd aurman
+makepkg -cis
+```
 ### Wallpapers:
 http://oswallpapers.com/
 ### Theming:
@@ -40,14 +47,7 @@ For terminal:
 ```
 system-san-francisco-font-git
 ```
-### Install aurman
-```
-mkdir builds 
-cd builds
-git clone https://aur.archlinux.org/aurman.git
-cd aurman
-makepkg -cis
-```
+
 ### Install powerpill
 ```
 aurman -S powerpill
