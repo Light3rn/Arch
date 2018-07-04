@@ -36,7 +36,7 @@ sudo idle3ctl -s 12 /dev/sdX
 
 ### Fonts
 ```
-aurman -S otf-san-francisco
+aurman -S otf-san-francisco adobe-source-code-pro-fonts
 ```
 Tweaks-Fonts
 * Window title Cantarelli Bold 11 -> SF Pro Display Bold
