@@ -8,11 +8,11 @@ arch-chroot /mnt pacman --noconfirm -S wayland xorg-server-xwayland ntfs-3g
 
 ## Install the desktop environment 
 if (( $wm == 1)); then
-arch-chroot /mnt pacman --noconfirm -S gnome gnome-tweak-tool gedit networkmanager dialog wpa_supplicant 
+arch-chroot /mnt pacman --noconfirm -S gnome gnome-tweak-tool gedit networkmanager dialog wpa_supplicant file-roller
 arch-chroot /mnt systemctl enable NetworkManager.service
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
 elif (( $wm == 2)); then
-arch-chroot /mnt pacman --noconfirm -S plasma-desktop plasma-wayland-session plasma-nm kate konsole dolphin powerdevil
+arch-chroot /mnt pacman --noconfirm -S plasma-desktop plasma-wayland-session plasma-nm kate konsole dolphin powerdevil ark
 arch-chroot /mnt systemctl enable NetworkManager.service
 ## Modify language here ~/.config/kxkbrc in future
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session startplasmacompositor\nfi' >> /mnt/home/$wantedname/.bash_profile
@@ -25,7 +25,7 @@ fi
 ## Install some favourite tools
 #arch-chroot /mnt pacman --noconfirm -S virtualbox-guest-utils
 arch-chroot /mnt pacman --noconfirm -S firefox git
-#arch-chroot /mnt pacman --noconfirm -S flashplugin file-roller npm qbittorrent minidlna libreoffice-still calibre adobe-source-code-pro-fonts vulkan-intel xf86-video-intel
+#arch-chroot /mnt pacman --noconfirm -S flashplugin npm qbittorrent minidlna libreoffice-still calibre adobe-source-code-pro-fonts vulkan-intel xf86-video-intel
 #arch-chroot /mnt systemctl enable minidlna.service
 ##arch-chroot /mnt pacman --noconfirm -S unrar gst-plugins-good vlc phonon-qt4-vlc mpd cantata fuseiso perl-image-exiftool pgadmin4
 
