@@ -7,10 +7,16 @@ Background: #2A2A2A
 ```
 aurman -S gnome-shell-extension-dash-to-dock
 ```
-### Install aurman
+### Install yay or aurman
 ```
 mkdir builds 
 cd builds
+
+git clone https://aur.archlinux.org/yay-bin.git
+or
+cd yay-bin
+makepkg -cis
+
 git clone https://aur.archlinux.org/aurman.git
 cd aurman
 gpg --recv-keys 465022E743D71E39
