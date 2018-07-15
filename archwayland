@@ -16,10 +16,14 @@ arch-chroot /mnt pacman --noconfirm -S plasma-desktop plasma-wayland-session pla
 arch-chroot /mnt systemctl enable NetworkManager.service
 ## Modify language here ~/.config/kxkbrc in future
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session startplasmacompositor\nfi' >> /mnt/home/$wantedname/.bash_profile
-else
+elif (( $wm == 3)); then
 arch-chroot /mnt pacman --noconfirm -S enlightenment terminology connman
 arch-chroot /mnt systemctl enable connman.service
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nenlightenment_start\nfi' >> /mnt/home/$wantedname/.bash_profile
+else
+arch-chroot /mnt pacman --noconfirm -S sway dialog wpa_supplicant
+echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXKB_DEFAULT_LAYOUT=fi exec sway\nfi' >> /mnt/home/$wantedname/.bash_profile
+e
 fi
 
 ## Install some favourite tools
