@@ -25,6 +25,7 @@ arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant sway rxvt-unicode d
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXKB_DEFAULT_LAYOUT=fi exec sway\nfi' >> /mnt/home/$wantedname/.bash_profile
 arch-chroot /mnt cp /etc/sway/config /home/$wantedname/.config/sway/config
 arch-chroot /mnt echo input $(swaymsg -t get_inputs | grep Synaptics | grep identifier | sed 's/.*identifier": //g' | sed 's/\,//g') $'{\n    tap enabled\n    natural_scroll enabled\n}' >> /home/$wantedname/.config/sway/config
+arch-chroot /mnt echo $(bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%\nbindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%\nbindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle\nbindsym XF86MonBrightnessDown exec brightnessctl set 5%-\nbindsym XF86MonBrightnessUp exec brightnessctl set +5%) >> /home/$wantedname/.config/sway/config
 fi
 
 ## Install some favourite tools
