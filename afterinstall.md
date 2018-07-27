@@ -3,7 +3,7 @@
 ```
 pacman -Rns $(pacman -Qtdq)
 ```
-#### Sizes of packages not in base or base-devel group
+#### Sizes of explicitly installed packages not in base or base-devel group
 ```
 expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel | sort)) | sort -n
 ```
