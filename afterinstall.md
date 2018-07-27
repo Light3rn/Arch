@@ -1,3 +1,17 @@
+### Cleanup
+#### Remove orphans
+```
+pacman -Rns $(pacman -Qtdq)
+```
+#### Sizes of packages not in base or base-devel group
+```
+expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel | sort)) | sort -n
+```
+#### Sizes of all packages
+```
+pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h
+```
+
 ### Customizations
 
 Text color: #1793D1
