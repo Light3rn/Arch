@@ -1,7 +1,7 @@
 ### Cleanup
 #### Remove orphans
 ```
-pacman -Rns $(pacman -Qtdq)
+sudo pacman -Rns $(pacman -Qtdq)
 ```
 #### Sizes of explicitly installed packages not in base or base-devel group
 ```
