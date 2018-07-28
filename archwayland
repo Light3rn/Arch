@@ -9,7 +9,7 @@ arch-chroot /mnt pacman --noconfirm -S wayland xorg-server-xwayland ntfs-3g
 ## Install the desktop environment 
 if (( $wm == 1)); then
 arch-chroot /mnt pacman --noconfirm -S gnome gnome-tweak-tool gedit networkmanager dialog wpa_supplicant file-roller
-arch-chroot /mnt pacman --noconfirm -Rns baobab epiphany gdm gnome-backgrounds gnome-calendar gnome-characters gnome-clocks gnome-contacts gnome-dictionary gnome-documents gnome-font-viewer gnome-getting-started-docs gnome-logs gnome-maps gnome-music gnome-todo gnome-user-docs gnome-user-share orca rygel yelp gnome-boxes gnome-software simple-scan
+arch-chroot /mnt pacman --noconfirm -Rns baobab epiphany gdm gnome-backgrounds gnome-calendar gnome-characters gnome-clocks gnome-contacts gnome-dictionary gnome-documents gnome-font-viewer gnome-getting-started-docs gnome-logs gnome-maps gnome-music gnome-photos gnome-todo gnome-user-docs gnome-user-share orca rygel yelp gnome-boxes gnome-software simple-scan
 #arch-chroot /mnt pacman --noconfirm -S gnome-tweak-tool dialog wpa_supplicant file-roller gedit gnome-calculator gnome-color-manager gnome-control-center gnome-disk-utility gnome-keyring gnome-menus gnome-screenshot gnome-session gnome-settings-daemon gnome-shell gnome-shell-extensions gnome-system-monitor gnome-terminal gnome-video-effects gvfs gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-smb mousetweaks mutter nautilus networkmanager 
 arch-chroot /mnt systemctl enable NetworkManager.service
 echo $'if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then\nXDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session\nfi' >> /mnt/home/$wantedname/.bash_profile
