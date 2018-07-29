@@ -12,6 +12,7 @@ arch-chroot /mnt pacman --noconfirm -S dialog wpa_supplicant
 mkdir /mnt/home/$wantedname/gnomebuild
 cp ./dotfiles/gnome/PKGBUILD /mnt/home/$wantedname/gnomebuild/PKGBUILD
 cp ./dotfiles/gnome/install /mnt/home/$wantedname/gnomebuild/builder
+arch-chroot /mnt chown -R $wantedname /home/$wantedname/gnomebuild/
 arch-chroot /mnt sudo -u $wantedname /home/$wantedname/gnomebuild/builder
 arch-chroot /mnt pacman --noconfirm -U /home/$wantedname/gnomebuild/gnome-lightern-1.0-1-any.pkg.tar.xz
 #arch-chroot /mnt pacman --noconfirm -Rns baobab epiphany gdm gnome-backgrounds gnome-calendar gnome-characters gnome-clocks gnome-contacts gnome-dictionary gnome-documents gnome-font-viewer gnome-getting-started-docs gnome-logs gnome-maps gnome-music gnome-photos gnome-todo gnome-user-docs gnome-user-share orca rygel sushi totem vino yelp gnome-boxes gnome-software simple-scan
