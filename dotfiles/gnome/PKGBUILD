@@ -1,0 +1,8 @@
+pkgname=gnome-lightern
+pkgver=1.0
+pkgrel=1
+pkgdesc="Minimal GNOME desktop"
+arch=("any")
+url=""
+license=('MIT')
+depends=('mutter' 'gnome-session' 'gnome-shell' 'networkmanager' 'gnome-terminal' 'gnome-control-center' 'nautilus' 'gedit' 'file-roller' 'gnome-screenshot' 'gnome-tweak-tool' 'eog' 'gnome-calculator' 'evince' 'gnome-disk-utility')
