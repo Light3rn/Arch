@@ -3,3 +3,6 @@ curl https://www.sa-cd.net/dsd | grep "color:black;text-decoration:none" | sed '
 
 # Get contents fron next lines
 sed -n '/Title:/{n;n;p;}' /home/user/dsdrecords/infofiles/1
+
+# Same but also parsing and into file
+sed -n '/Title:/{n;n;p;}' /home/user/dsdrecords/infofiles/1 | sed 's/.*sans-serif">//g' | sed 's/<\/font>.*//g' >> /home/user/dsdrecords/data.csv
