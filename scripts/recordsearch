@@ -1,0 +1,7 @@
+#!/bin/bash
+## Get all the records natively recorded in dsd
+curl https://www.sa-cd.net/dsd | grep "color:black;text-decoration:none" | sed 's/.*none">//g' | sed 's/<\/a>.*//g' >> file1
+for i in {2..75}
+do
+	curl https://www.sa-cd.net/dsd/$i | grep "color:black;text-decoration:none" | sed 's/.*none">//g' | sed 's/<\/a>.*//g' >> file1
+done
