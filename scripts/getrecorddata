@@ -1,0 +1,5 @@
+#!/bin/bash
+while read p; do
+  echo "Record number $p"
+  curl https://www.sa-cd.net/showtitle/$p > ~/infofiles/$p
+done <recordnumbers
