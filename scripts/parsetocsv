@@ -1,0 +1,26 @@
+#!/bin/bash
+FILES=/home/$USER/dsdrecords/infofiles/*
+OUTPUTFILE=/home/$USER/outputdata.csv
+
+rm $OUTPUTFILE
+echo "Label:;Serial:;Title:;Description:;Track listing:;Genre:;Content:;Media:;Recording type:;Recording info:;Note:" >> $OUTPUTFILE
+
+for f in $FILES
+do
+  	echo "Processing $f file..."
+
+	label=$(sed -n '/Label:/{n;n;p;}' $f | sed 's/.*1">//g' | sed 's/;//g' | sed 's/<\/a>.*//g' | tr -d '\n\r')
+	serial=$(sed -n '/Serial:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	title=$(sed -n '/Title:/{n;n;p;}' $f | sed 's/.*sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	description=$(sed -n '/Description:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	tracklisting=$(sed -n '/Track listing:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	genre=$(sed -n '/Genre:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	content=$(sed -n '/Content:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	media=$(sed -n '/Media:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	recordingtype=$(sed -n '/Recording type:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | tr -d '\n\r')
+	recordinginfo=$(sed -n '/Recording info:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | sed 's/"//g' | tr -d '\n\r')
+	note=$(sed -n '/Note:/{n;n;p;}' $f | sed 's/.*face="Arial, Helvetica, sans-serif">//g' | sed 's/;//g' | sed 's/<\/font>.*//g' | sed 's/"//g' | tr -d '\n\r')
+
+	echo "$label;$serial;$title;$description;$tracklisting;$genre;$content;$media;$recordingtype;$recordinginfo;$note" >> $OUTPUTFILE
+
+done
