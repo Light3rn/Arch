@@ -1,11 +1,5 @@
 ### Cleanup
 
-#### Add screensaver
-```
-sudo pacman -S gnome-screensaver
-sudo cp -p /usr/share/applications/gnome-screensaver.desktop /etc/xdg/autostart/
-```
-
 #### Remove orphans
 ```
 sudo pacman -Rns $(pacman -Qtdq)
