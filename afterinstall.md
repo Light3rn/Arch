@@ -18,6 +18,14 @@ pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -
 Text color: #1793D1
 Background: #2A2A2A
 
+### Java
+```
+sudo pacman -S jre10-openjdk
+```
+Run with command:
+```
+java -jar <jar file>
+```
 ### Dash to dock:
 ```
 aurman -S gnome-shell-extension-dash-to-dock
