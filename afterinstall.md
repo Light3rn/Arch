@@ -27,6 +27,7 @@ Run with command:
 java -jar <jar file>
 ```
 ### Dash to dock:
+May cause crashes. In the past it helped to choose "Show the dock on: Primary monitor" and "Show on all monitors."
 ```
 aurman -S gnome-shell-extension-dash-to-dock
 ```
