@@ -4,11 +4,11 @@
 ```
 sudo pacman -Rns $(pacman -Qtdq)
 ```
-#### Sizes of explicitly installed packages not in base, base-devel or gnome group
+#### Sizes of explicitly installed packages not in base, base-devel or gnome group ("Applications")
 ```
 expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel gnome | sort)) | sort -n
 ```
-#### Explicitly installed packages not needed as dependencies inside gnome group:
+#### Explicitly installed packages not needed as dependencies inside gnome group ("Operating System"):
 ```
 pacman -Qqget gnome
 ```
