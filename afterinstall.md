@@ -8,6 +8,10 @@ sudo pacman -Rns $(pacman -Qtdq)
 ```
 expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel gnome | sort)) | sort -n
 ```
+#### Explicitly installed packages not needed as dependencies inside gnome group:
+```
+pacman -Qqget gnome
+```
 #### Sizes of all packages
 ```
 pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h
