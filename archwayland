@@ -4,7 +4,7 @@ wantedname=$1
 wm=$2
 
 ## Install wayland, wayland x compability support, wifi compability additions and better ntfs support for external drives and usb sticks
-arch-chroot /mnt pacman --noconfirm -S wayland xorg-server-xwayland ntfs-3g
+arch-chroot /mnt pacman --noconfirm -S wayland xorg-server-xwayland xorg-xhost ntfs-3g
 
 ## Install the desktop environment 
 if (( $wm == 1)); then
@@ -38,7 +38,7 @@ fi
 
 ## Install some favourite tools
 #arch-chroot /mnt pacman --noconfirm -S virtualbox-guest-utils
-arch-chroot /mnt pacman --noconfirm -S firefox git xorg-xhost
+arch-chroot /mnt pacman --noconfirm -S firefox git
 #arch-chroot /mnt pacman --noconfirm -S flashplugin npm qbittorrent minidlna libreoffice-still calibre cantata audacious adobe-source-code-pro-fonts vulkan-intel xf86-video-intel
 #arch-chroot /mnt systemctl enable minidlna.service
 ##arch-chroot /mnt pacman --noconfirm -S unrar gst-plugins-good vlc phonon-qt4-vlc mpd mpc cantata fuseiso perl-image-exiftool pgadmin4
