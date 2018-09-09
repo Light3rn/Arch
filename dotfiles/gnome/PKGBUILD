@@ -5,4 +5,4 @@ pkgdesc="Lightern's Minimal GNOME desktop"
 arch=("any")
 url=""
 license=('MIT')
-depends=('eog' 'evince' 'file-roller' 'gedit' 'gnome-calculator' 'gnome-control-center' 'gnome-disk-utility' 'gnome-screenshot' 'gnome-session' 'gnome-shell' 'gnome-terminal' 'gnome-tweak-tool' 'mutter' 'nautilus' 'networkmanager' 'xdg-user-dirs-gtk' 'xorg-xhost')
+depends=('eog' 'evince' 'file-roller' 'gedit' 'gnome-calculator' 'gnome-control-center' 'gnome-disk-utility' 'gnome-screenshot' 'gnome-session' 'gnome-shell' 'gnome-terminal' 'gnome-tweak-tool' 'nautilus' 'networkmanager' 'xdg-user-dirs-gtk')
