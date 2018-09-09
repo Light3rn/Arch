@@ -226,6 +226,9 @@ git pull
 ```
 aurman -S monero
 ```
+### Install dmg2img
+```
+yay -S dmg2img
 
 ### Install mellowplayer
 ```
