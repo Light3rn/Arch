@@ -1,7 +1,7 @@
 pkgname=gnome-lightern
 pkgver=1.0
 pkgrel=1
-pkgdesc="Minimal GNOME desktop"
+pkgdesc="Lightern's Minimal GNOME desktop"
 arch=("any")
 url=""
 license=('MIT')
