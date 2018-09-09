@@ -4,7 +4,7 @@
 ```
 sudo pacman -Rns $(pacman -Qtdq)
 ```
-#### Sizes of explicitly installed packages not in base, base-devel or gnome group ("Applications")
+#### Sizes of explicitly installed packages not in base, base-devel or gnome group ("Programs")
 ```
 expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel gnome | sort)) | sort -n
 ```
