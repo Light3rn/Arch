@@ -5,4 +5,4 @@ pkgdesc="Minimal GNOME desktop"
 arch=("any")
 url=""
 license=('MIT')
-depends=('mutter' 'gnome-session' 'gnome-shell' 'networkmanager' 'gnome-terminal' 'gnome-control-center' 'nautilus' 'gedit' 'file-roller' 'gnome-screenshot' 'gnome-tweak-tool' 'eog' 'gnome-calculator' 'evince' 'gnome-disk-utility' 'xorg-xhost')
+depends=('mutter' 'gnome-session' 'gnome-shell' 'networkmanager' 'gnome-terminal' 'gnome-control-center' 'nautilus' 'gedit' 'file-roller' 'gnome-screenshot' 'gnome-tweak-tool' 'eog' 'gnome-calculator' 'evince' 'gnome-disk-utility' 'xorg-xhost' 'xdg-user-dirs-gtk')
