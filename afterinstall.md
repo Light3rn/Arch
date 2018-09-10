@@ -1,7 +1,8 @@
 ### Cleanup
 
-#### Remove orphans
+#### Check and remove orphans
 ```
+pacman -Qtdq
 sudo pacman -Rns $(pacman -Qtdq)
 ```
 #### Sizes of explicitly installed packages not in base, base-devel or gnome group ("Programs")
