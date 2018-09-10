@@ -9,7 +9,7 @@ sudo pacman -Rns $(pacman -Qtdq)
 ```
 expac -H M "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel gnome | sort)) | sort -n
 ```
-#### Explicitly installed packages not needed as dependencies inside gnome group ("Operating System"):
+#### Explicitly installed packages inside gnome group not needed as dependencies ("Operating System"):
 ```
 pacman -Qqget gnome
 ```
