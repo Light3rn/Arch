@@ -23,10 +23,12 @@ pacman -Qme
 ```
 
 ### Customizations
-
+```
 Text color: #1793D1
 Background: #2A2A2A
-
+Text color: #00FF00
+Background: #303030
+```
 ### Java
 ```
 sudo pacman -S jre10-openjdk
