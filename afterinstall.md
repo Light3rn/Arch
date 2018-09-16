@@ -29,6 +29,18 @@ Background: #2A2A2A
 Text color: #00FF00
 Background: #303030
 ```
+### Make your scripts programs ("Install")
+#### Make executable as command:
+Just copy to /usr/bin
+#### Add to program list
+Add this (minimum) to /usr/share/applications/<scriptname>.desktop:
+```
+[Desktop Entry]
+Type=Application
+Name=<name>
+Exec=/usr/bin/<name> 
+```
+
 ### Java
 ```
 sudo pacman -S jre10-openjdk
